@@ -13,9 +13,12 @@ services:
       - NP_REPLICATION_TYPE=primary
       - NP_REPLICATION_USER=replicator
       - NP_REPLICATION_PASSWORD=passyMcPassword
-  np-replica:
+      - NP_WAL_LEVEL=logical
+      - NP_REPLICATION_PHYSICAL_SLOTS=slot1,slot2
+      - NP_REPLICATION_PUBLICATION_NAMES=pub1,pub2
+  np-replica-physical:
     image: pgnp:latest
-    container_name: replica
+    container_name: replica-physical
     depends_on:
       - np-primary
     ports:
@@ -25,7 +28,30 @@ services:
       - POSTGRES_DB=noisepage
       - POSTGRES_USER=noisepage
       - POSTGRES_PASSWORD=terrier
+      - NP_PRIMARY_NAME=primary
       - NP_PRIMARY_PORT=15721
-      - NP_REPLICATION_TYPE=replica
+      - NP_PRIMARY_USERNAME=noisepage
+      - NP_REPLICATION_TYPE=replica-physical
       - NP_REPLICATION_USER=replicator
       - NP_REPLICATION_PASSWORD=passyMcPassword
+      - NP_REPLICATION_PHYSICAL_SLOT=slot1
+  np-replica-logical:
+    image: pgnp:latest
+    container_name: replica-logical
+    depends_on:
+      - np-primary
+    ports:
+      - "15723:15721"
+    environment:
+      - PGPORT=15721
+      - POSTGRES_DB=noisepage
+      - POSTGRES_USER=noisepage
+      - POSTGRES_PASSWORD=terrier
+      - NP_PRIMARY_NAME=primary
+      - NP_PRIMARY_PORT=15721
+      - NP_PRIMARY_USERNAME=noisepage
+      - NP_REPLICATION_TYPE=replica-logical
+      - NP_REPLICATION_USER=replicator
+      - NP_REPLICATION_PASSWORD=passyMcPassword
+      - NP_REPLICATION_SUBSCRIPTION_NAME=sub1
+      - NP_REPLICATION_PUBLICATION_NAME=pub1
