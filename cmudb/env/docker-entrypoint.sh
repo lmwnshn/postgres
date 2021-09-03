@@ -22,14 +22,19 @@ BIN_DIR=${BIN_DIR}  # Folder containing all the PostgreSQL binaries.
 PGPORT=${PGPORT}    # The port to listen on.
 
 # Replication.
-NP_REPLICATION_TYPE=${NP_REPLICATION_TYPE}          # Must be "primary" or "replica-physical" or "replica-logical".
+# We only support physical replication by default since logical replication is difficult to script.
+# If you need logical replication, run these commands AFTER creating all relevant tables:
+#   (publisher)   create publication PUB_NAME for all tables;
+#   (subscriber)  create subscription SUB_NAME connection 'host=HOSTNAME_PRIMARY port=PGPORT dbname=POSTGRES_DB user=POSTGRES_USER password=POSTGRES_PASSWORD' publication PUB_NAME;
+# Note that logical replication has no fixed concept of a primary/replica.
+
+NP_REPLICATION_TYPE=${NP_REPLICATION_TYPE}          # Must be "primary" or "replica". For logical replicas, use "primary".
 NP_REPLICATION_USER=${NP_REPLICATION_USER}          # Replication user.
 NP_REPLICATION_PASSWORD=${NP_REPLICATION_PASSWORD}  # Replication password.
 NP_WAL_LEVEL=${NP_WAL_LEVEL}                        # The wal_level setting in PostgreSQL.
 
 # The primary must have these defined.
 NP_REPLICATION_PHYSICAL_SLOTS=${NP_REPLICATION_PHYSICAL_SLOTS}
-NP_REPLICATION_PUBLICATION_NAMES=${NP_REPLICATION_PUBLICATION_NAMES}
 
 # These settings need to be defined on ALL replicas.
 NP_PRIMARY_NAME=${NP_PRIMARY_NAME}                  # The name of the primary on the Docker instance.
@@ -37,11 +42,7 @@ NP_PRIMARY_USERNAME=${NP_PRIMARY_USERNAME}          # The username to connect to
 NP_PRIMARY_PORT=${NP_PRIMARY_PORT}                  # The port on the primary.
 
 # Physical replicas.
-NP_REPLICATION_PHYSICAL_SLOT=${NP_REPLICATION_PHYSICAL_SLOT}
-
-# Logical replicas.
-NP_REPLICATION_PUBLICATION_NAME=${NP_REPLICATION_PUBLICATION_NAME}
-NP_REPLICATION_SUBSCRIPTION_NAME=${NP_REPLICATION_SUBSCRIPTION_NAME}
+NP_REPLICATION_PHYSICAL_SLOT=${NP_REPLICATION_PHYSICAL_SLOT}    # The physical slot that this replica will use.
 
 # =====================================================================
 # Default environment variable values.
@@ -80,7 +81,20 @@ _pg_stop() {
 }
 
 _pg_start() {
-  ${BIN_DIR}/postgres "-D" "${PGDATA}" -p 15721
+  if [ "${NP_REPLICATION_TYPE}" = "primary" ]; then
+    (
+      sleep 5
+      IFS=','
+      for publication in $(echo "${NP_REPLICATION_PUBLICATION_NAMES[@]}"); do
+        echo $publication
+        # Create logical replication publication(s).
+        # Note that for updates/deletes to work, each table may need REPLICA IDENTITY to be manually set.
+        ${BIN_DIR}/psql -c "create publication $publication for all tables" postgres
+      done
+    ) &
+  fi
+
+  ${BIN_DIR}/postgres "-D" "${PGDATA}" -p ${PGPORT}
 }
 
 _pg_initdb() {
@@ -150,18 +164,6 @@ _pg_setup_replication() {
         ${BIN_DIR}/psql -c "select pg_create_physical_replication_slot('$slot')" postgres
       done
     )
-
-    (
-      IFS=','
-      for publication in $(echo "${NP_REPLICATION_PUBLICATION_NAMES[@]}"); do
-        echo $publication
-        # Create logical replication publication(s).
-        # Note that for updates/deletes to work, each table may need REPLICA IDENTITY to be manually set.
-        ${BIN_DIR}/psql -c "create publication $publication for all tables" postgres
-      done
-    )
-  elif [ "${NP_REPLICATION_TYPE}" = "replica-logical" ]; then
-    ${BIN_DIR}/psql -c "create subscription ${NP_REPLICATION_SUBSCRIPTION_NAME} connection 'host=${NP_PRIMARY_NAME} port=${NP_PRIMARY_PORT} dbname=${POSTGRES_DB} user=${POSTGRES_USER} password=${POSTGRES_PASSWORD}' publication ${NP_REPLICATION_PUBLICATION_NAME}" postgres
   fi
 }
 
@@ -199,7 +201,7 @@ _main_primary() {
   _pg_start
 }
 
-_main_replica_physical() {
+_main_replica() {
   _wait_for_primary
 
   # Initialize replica backup from primary.
@@ -208,22 +210,11 @@ _main_replica_physical() {
   _pg_start
 }
 
-_main_replica_logical() {
-  # Note that this is a misnomer since there's no real primary/replica designation in logical replication.
-  _wait_for_primary
-
-  _pg_start_all
-  _pg_stop
-  _pg_start
-}
-
 main() {
   if [ -z "${NP_REPLICATION_TYPE}" ] || [ "${NP_REPLICATION_TYPE}" = "primary" ]; then
     _main_primary
-  elif [ "${NP_REPLICATION_TYPE}" = "replica-physical" ]; then
-    _main_replica_physical
-  elif [ "${NP_REPLICATION_TYPE}" = "replica-logical" ]; then
-    _main_replica_logical
+  elif [ "${NP_REPLICATION_TYPE}" = "replica" ]; then
+    _main_replica
   else
     echo "Unknown replication type: ${NP_REPLICATION_TYPE}"
     exit 1
