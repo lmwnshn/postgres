@@ -46,7 +46,7 @@ COPY --chown=terrier:terrier . /home/terrier/repo
 
 # Configure and build NoisePage.
 RUN cd /home/terrier/repo \
-    && bash ./cmudb/build/configure.sh debug \
+    && bash ./cmudb/build/configure.sh release \
     && make -j -s \
     && make install -j -s
 

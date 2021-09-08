@@ -2,7 +2,7 @@ version: '3'
 services:
   np-primary:
     image: pgnp:latest
-    container_name: primary-test
+    container_name: primary-test-logical
     ports:
       - "15721:15721"
     environment:
@@ -15,36 +15,36 @@ services:
       - POSTGRES_DB=noisepage
       - POSTGRES_PASSWORD=terrier
       - POSTGRES_USER=noisepage
-  np-replica-physical:
-    image: pgnp:latest
-    container_name: replica-physical-test
-    depends_on:
-      - np-primary
-    ports:
-      - "15722:15721"
-    environment:
-      - NP_PRIMARY_NAME=primary-test
-      - NP_PRIMARY_PORT=15721
-      - NP_PRIMARY_USERNAME=noisepage
-      - NP_REPLICATION_PASSWORD=passyMcPassword
-      - NP_REPLICATION_PHYSICAL_SLOT=slot1
-      - NP_REPLICATION_TYPE=replica
-      - NP_REPLICATION_USER=replicator
-      - PGPORT=15721
-      - POSTGRES_DB=noisepage
-      - POSTGRES_PASSWORD=terrier
-      - POSTGRES_USER=noisepage
-#  np-replica-logical:
+#  np-replica-physical:
 #    image: pgnp:latest
-#    container_name: replica-logical
+#    container_name: replica-physical-test
+#    depends_on:
+#      - np-primary
 #    ports:
-#      - "15723:15721"
+#      - "15722:15721"
 #    environment:
-#      - NP_REPLICATION_TYPE=primary
-#      - NP_REPLICATION_USER=replicator
+#      - NP_PRIMARY_NAME=primary-test
+#      - NP_PRIMARY_PORT=15721
+#      - NP_PRIMARY_USERNAME=noisepage
 #      - NP_REPLICATION_PASSWORD=passyMcPassword
-#      - NP_WAL_LEVEL=logical
+#      - NP_REPLICATION_PHYSICAL_SLOT=slot1
+#      - NP_REPLICATION_TYPE=replica
+#      - NP_REPLICATION_USER=replicator
 #      - PGPORT=15721
 #      - POSTGRES_DB=noisepage
 #      - POSTGRES_PASSWORD=terrier
 #      - POSTGRES_USER=noisepage
+  np-replica-logical:
+    image: pgnp:latest
+    container_name: replica-logical-test
+    ports:
+      - "15723:15721"
+    environment:
+      - NP_REPLICATION_TYPE=primary
+      - NP_REPLICATION_USER=replicator
+      - NP_REPLICATION_PASSWORD=passyMcPassword
+      - NP_WAL_LEVEL=logical
+      - PGPORT=15721
+      - POSTGRES_DB=noisepage
+      - POSTGRES_PASSWORD=terrier
+      - POSTGRES_USER=noisepage

@@ -143,6 +143,32 @@ _pg_setup_replication() {
   # hot_standby_feedback: True if standby should tell primary about what queries are currently executing.
   echo "hot_standby_feedback = on" >> ${AUTO_CONF}
 
+  # pgtune NUC
+
+  # DB Version: 13
+  # OS Type: linux
+  # DB Type: oltp
+  # Total Memory (RAM): 64 GB
+  # CPUs num: 12
+  # Data Storage: ssd
+
+  echo "max_connections = 300" >> ${AUTO_CONF}
+  echo "shared_buffers = 16GB" >> ${AUTO_CONF}
+  echo "effective_cache_size = 48GB" >> ${AUTO_CONF}
+  echo "maintenance_work_mem = 2GB" >> ${AUTO_CONF}
+  echo "checkpoint_completion_target = 0.9" >> ${AUTO_CONF}
+  echo "wal_buffers = 16MB" >> ${AUTO_CONF}
+  echo "default_statistics_target = 100" >> ${AUTO_CONF}
+  echo "random_page_cost = 1.1" >> ${AUTO_CONF}
+  echo "effective_io_concurrency = 200" >> ${AUTO_CONF}
+  echo "work_mem = 13981kB" >> ${AUTO_CONF}
+  echo "min_wal_size = 2GB" >> ${AUTO_CONF}
+  echo "max_wal_size = 8GB" >> ${AUTO_CONF}
+  echo "max_worker_processes = 12" >> ${AUTO_CONF}
+  echo "max_parallel_workers_per_gather = 4" >> ${AUTO_CONF}
+  echo "max_parallel_workers = 12" >> ${AUTO_CONF}
+  echo "max_parallel_maintenance_workers = 4" >> ${AUTO_CONF}
+
   if [ "${NP_REPLICATION_TYPE}" = "primary" ]; then
     # ===============================
     # Enable replication.
