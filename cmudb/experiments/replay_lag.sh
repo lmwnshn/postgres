@@ -28,6 +28,8 @@ done
 
 java -jar $BENCHBASE_BIN_DIR/benchbase.jar -b tpcc -c $BENCHBASE_CONFIG_DIR/sample_tpcc_config.xml --execute=true &
 EXECUTE_PID=$!
+# java -jar $BENCHBASE_BIN_DIR/benchbase.jar -b tpcc -c $BENCHBASE_CONFIG_DIR/sample_tpcc_config_readonly.xml --execute=true &
+# EXECUTE_REPLICA_PID=$!
 cd -
 
 docker update replica-physical --cpus ${CPUS}
@@ -46,6 +48,7 @@ set -x
 # Cleanup.
 
 kill $EXECUTE_PID
+# kill $EXECUTE_REPLICA_PID
 kill $POSTGRES_PID
 
 kill_descendant_processes() {
