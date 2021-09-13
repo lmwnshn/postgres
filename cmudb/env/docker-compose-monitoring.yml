@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # https://prometheus.io/docs/guides/cadvisor/
+# TODO(WAN): hardcoded folder for persisting prometheus, needs to be chown 66534:66534 (nobody)'d
 
 version: '3.2'
 services:
@@ -13,6 +14,7 @@ services:
     - --config.file=/etc/prometheus/prometheus.yml
     volumes:
     - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    - /home/kapi/capybaraland/docker/prometheus:/prometheus
     depends_on:
     - cadvisor
   cadvisor:
