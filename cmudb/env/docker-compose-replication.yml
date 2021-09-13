@@ -17,7 +17,7 @@ services:
       - POSTGRES_USER=noisepage
   np-replica-physical:
     image: pgnp:latest
-    container_name: replica-physical-test
+    container_name: replica-physical
     depends_on:
       - np-primary
     ports:
