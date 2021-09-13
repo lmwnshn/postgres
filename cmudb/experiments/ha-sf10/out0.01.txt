@@ -1,0 +1,363 @@
+[INFO ] 2021-09-13 17:49:15,805 [main]  com.oltpbenchmark.DBWorkload main - ======================================================================
+
+Benchmark:     TPCC {com.oltpbenchmark.benchmarks.tpcc.TPCCBenchmark}
+Configuration: /home/cmu-db-nuc-wan/git/scripts/benchbase/postgres/sample_tpcc_config.xml
+Type:          POSTGRES
+Driver:        org.postgresql.Driver
+URL:           jdbc:postgresql://localhost:15721/noisepage?sslmode=disable&preferQueryMode=extended
+Isolation:     TRANSACTION_READ_COMMITTED
+Scale Factor:  10.0
+
+[INFO ] 2021-09-13 17:49:15,806 [main]  com.oltpbenchmark.DBWorkload main - ======================================================================
+[INFO ] 2021-09-13 17:49:15,825 [main]  com.oltpbenchmark.DBWorkload main - Creating new TPCC database...
+[INFO ] 2021-09-13 17:49:15,967 [main]  com.oltpbenchmark.DBWorkload main - Finished creating new TPCC database...
+[INFO ] 2021-09-13 17:49:16,070 [main]  com.oltpbenchmark.DBWorkload main - Skipping benchmark workload execution
+[INFO ] 2021-09-13 17:49:16,411 [main]  com.oltpbenchmark.DBWorkload main - ======================================================================
+
+Benchmark:     TPCC {com.oltpbenchmark.benchmarks.tpcc.TPCCBenchmark}
+Configuration: /home/cmu-db-nuc-wan/git/scripts/benchbase/postgres/sample_tpcc_config.xml
+Type:          POSTGRES
+Driver:        org.postgresql.Driver
+URL:           jdbc:postgresql://localhost:15721/noisepage?sslmode=disable&preferQueryMode=extended
+Isolation:     TRANSACTION_READ_COMMITTED
+Scale Factor:  10.0
+
+[INFO ] 2021-09-13 17:49:16,412 [main]  com.oltpbenchmark.DBWorkload main - ======================================================================
+[INFO ] 2021-09-13 17:49:16,595 [main]  com.oltpbenchmark.DBWorkload main - Loading data into TPCC database...
+Attaching to primary-physical, replica-physical
+[36mprimary-physical       |[0m The files belonging to this database system will be owned by user "terrier".
+[36mprimary-physical       |[0m This user must also own the server process.
+[36mprimary-physical       |[0m 
+[36mprimary-physical       |[0m The database cluster will be initialized with locale "C".
+[36mprimary-physical       |[0m The default database encoding has accordingly been set to "SQL_ASCII".
+[36mprimary-physical       |[0m The default text search configuration will be set to "english".
+[36mprimary-physical       |[0m 
+[36mprimary-physical       |[0m Data page checksums are disabled.
+[36mprimary-physical       |[0m 
+[36mprimary-physical       |[0m fixing permissions on existing directory /pgdata ... ok
+[36mprimary-physical       |[0m creating subdirectories ... ok
+[36mprimary-physical       |[0m selecting dynamic shared memory implementation ... posix
+[36mprimary-physical       |[0m selecting default max_connections ... 100
+[36mprimary-physical       |[0m selecting default shared_buffers ... 128MB
+[36mprimary-physical       |[0m selecting default time zone ... Etc/UTC
+[36mprimary-physical       |[0m creating configuration files ... ok
+[36mprimary-physical       |[0m running bootstrap script ... ok
+[36mprimary-physical       |[0m performing post-bootstrap initialization ... ok
+[36mprimary-physical       |[0m syncing data to disk ... initdb: warning: enabling "trust" authentication for local connections
+[36mprimary-physical       |[0m You can change this by editing pg_hba.conf or using the option -A, or
+[36mprimary-physical       |[0m --auth-local and --auth-host, the next time you run initdb.
+[36mprimary-physical       |[0m ok
+[36mprimary-physical       |[0m 
+[36mprimary-physical       |[0m 
+[36mprimary-physical       |[0m Success. You can now start the database server using:
+[36mprimary-physical       |[0m 
+[36mprimary-physical       |[0m     /home/terrier/repo/build/bin/pg_ctl -D /pgdata -l logfile start
+[36mprimary-physical       |[0m 
+[36mprimary-physical       |[0m waiting for server to start....2021-09-13 21:48:46.125 UTC [23] LOG:  starting PostgreSQL 13.4 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+[36mprimary-physical       |[0m 2021-09-13 21:48:46.125 UTC [23] LOG:  listening on IPv4 address "0.0.0.0", port 15721
+[36mprimary-physical       |[0m 2021-09-13 21:48:46.125 UTC [23] LOG:  listening on IPv6 address "::", port 15721
+[36mprimary-physical       |[0m 2021-09-13 21:48:46.132 UTC [23] LOG:  listening on Unix socket "/tmp/.s.PGSQL.15721"
+[36mprimary-physical       |[0m 2021-09-13 21:48:46.141 UTC [24] LOG:  database system was shut down at 2021-09-13 21:48:42 UTC
+[36mprimary-physical       |[0m 2021-09-13 21:48:46.147 UTC [23] LOG:  database system is ready to accept connections
+[36mprimary-physical       |[0m  done
+[36mprimary-physical       |[0m server started
+[36mprimary-physical       |[0m CREATE ROLE
+[36mprimary-physical       |[0m CREATE DATABASE
+[36mprimary-physical       |[0m GRANT ROLE
+[36mprimary-physical       |[0m ALTER ROLE
+[36mprimary-physical       |[0m CREATE ROLE
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.042 UTC [23] LOG:  received SIGHUP, reloading configuration files
+[36mprimary-physical       |[0m  pg_reload_conf 
+[36mprimary-physical       |[0m ----------------
+[36mprimary-physical       |[0m  t
+[36mprimary-physical       |[0m (1 row)
+[36mprimary-physical       |[0m 
+[36mprimary-physical       |[0m slot1
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.043 UTC [23] LOG:  parameter "hot_standby_feedback" changed to "on"
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.043 UTC [23] LOG:  parameter "max_connections" cannot be changed without restarting the server
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.043 UTC [23] LOG:  parameter "shared_buffers" cannot be changed without restarting the server
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.043 UTC [23] LOG:  parameter "effective_cache_size" changed to "48GB"
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.043 UTC [23] LOG:  parameter "maintenance_work_mem" changed to "2GB"
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.043 UTC [23] LOG:  parameter "checkpoint_completion_target" changed to "0.9"
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.043 UTC [23] LOG:  parameter "wal_buffers" cannot be changed without restarting the server
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.043 UTC [23] LOG:  parameter "random_page_cost" changed to "1.1"
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.043 UTC [23] LOG:  parameter "effective_io_concurrency" changed to "200"
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.043 UTC [23] LOG:  parameter "work_mem" changed to "13981kB"
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.043 UTC [23] LOG:  parameter "min_wal_size" changed to "2GB"
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.043 UTC [23] LOG:  parameter "max_wal_size" changed to "8GB"
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.043 UTC [23] LOG:  parameter "max_worker_processes" cannot be changed without restarting the server
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.043 UTC [23] LOG:  parameter "max_parallel_workers_per_gather" changed to "4"
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.043 UTC [23] LOG:  parameter "max_parallel_workers" changed to "12"
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.043 UTC [23] LOG:  parameter "max_parallel_maintenance_workers" changed to "4"
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.043 UTC [23] LOG:  configuration file "/pgdata/postgresql.auto.conf" contains errors; unaffected changes were applied
+[36mprimary-physical       |[0m slot1
+[36mprimary-physical       |[0m  pg_create_physical_replication_slot 
+[36mprimary-physical       |[0m -------------------------------------
+[36mprimary-physical       |[0m  (slot1,)
+[36mprimary-physical       |[0m (1 row)
+[36mprimary-physical       |[0m 
+[36mprimary-physical       |[0m waiting for server to shut down....2021-09-13 21:48:47.070 UTC [23] LOG:  received fast shutdown request
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.074 UTC [23] LOG:  aborting any active transactions
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.075 UTC [23] LOG:  background worker "logical replication launcher" (PID 30) exited with exit code 1
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.075 UTC [25] LOG:  shutting down
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.111 UTC [23] LOG:  database system is shut down
+[36mprimary-physical       |[0m  done
+[36mprimary-physical       |[0m server stopped
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.363 UTC [49] LOG:  starting PostgreSQL 13.4 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.363 UTC [49] LOG:  listening on IPv4 address "0.0.0.0", port 15721
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.363 UTC [49] LOG:  listening on IPv6 address "::", port 15721
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.369 UTC [49] LOG:  listening on Unix socket "/tmp/.s.PGSQL.15721"
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.376 UTC [51] LOG:  database system was shut down at 2021-09-13 21:48:47 UTC
+[36mprimary-physical       |[0m 2021-09-13 21:48:47.389 UTC [49] LOG:  database system is ready to accept connections
+[33mreplica-physical       |[0m primary-physical:15721 - accepting connections
+[33mreplica-physical       |[0m Password: 
+[33mreplica-physical       |[0m waiting for checkpoint
+[INFO ] 2021-09-13 17:51:03,916 [main]  com.oltpbenchmark.DBWorkload main - Finished loading data into TPCC database...
+[INFO ] 2021-09-13 17:51:03,917 [main]  com.oltpbenchmark.DBWorkload main - Skipping benchmark workload execution
+VACUUM
+[33mreplica-physical       |[0m       0/1086794 kB (0%), 0/1 tablespace
+[33mreplica-physical       |[0m  823458/1086794 kB (75%), 0/1 tablespace
+[33mreplica-physical       |[0m 1086803/1086803 kB (100%), 0/1 tablespace
+[33mreplica-physical       |[0m 1086803/1086803 kB (100%), 1/1 tablespace
+[33mreplica-physical       |[0m 2021-09-13 21:54:07.807 UTC [13] LOG:  starting PostgreSQL 13.4 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+[33mreplica-physical       |[0m 2021-09-13 21:54:07.807 UTC [13] LOG:  listening on IPv4 address "0.0.0.0", port 15721
+[33mreplica-physical       |[0m 2021-09-13 21:54:07.807 UTC [13] LOG:  listening on IPv6 address "::", port 15721
+[33mreplica-physical       |[0m 2021-09-13 21:54:07.814 UTC [13] LOG:  listening on Unix socket "/tmp/.s.PGSQL.15721"
+[33mreplica-physical       |[0m 2021-09-13 21:54:07.821 UTC [14] LOG:  database system was interrupted; last known up at 2021-09-13 21:53:59 UTC
+[33mreplica-physical       |[0m 2021-09-13 21:54:07.930 UTC [14] LOG:  entering standby mode
+[33mreplica-physical       |[0m 2021-09-13 21:54:07.937 UTC [14] LOG:  redo starts at 0/E0155F8
+[33mreplica-physical       |[0m 2021-09-13 21:54:20.623 UTC [14] LOG:  consistent recovery state reached at 0/B2981A38
+[33mreplica-physical       |[0m 2021-09-13 21:54:20.624 UTC [13] LOG:  database system is ready to accept read only connections
+[33mreplica-physical       |[0m 2021-09-13 21:54:20.629 UTC [18] LOG:  started streaming WAL from primary at 0/B3000000 on timeline 1
+[33mreplica-physical       |[0m 2021-09-13 22:09:29.296 UTC [18] FATAL:  could not receive data from WAL stream: server closed the connection unexpectedly
+[33mreplica-physical       |[0m 		This probably means the server terminated abnormally
+[33mreplica-physical       |[0m 		before or while processing the request.
+[33mreplica-physical       |[0m 2021-09-13 22:09:29.296 UTC [14] LOG:  invalid record length at 0/B3000148: wanted 24, got 0
+[33mreplica-physical       |[0m 2021-09-13 22:09:29.309 UTC [19] FATAL:  could not connect to the primary server: server closed the connection unexpectedly
+[33mreplica-physical       |[0m 		This probably means the server terminated abnormally
+[33mreplica-physical       |[0m 		before or while processing the request.
+[36mprimary-physical exited with code 137
+[0m[32mprimary-physical       |[0m The files belonging to this database system will be owned by user "terrier".
+[32mprimary-physical       |[0m This user must also own the server process.
+[32mprimary-physical       |[0m 
+[32mprimary-physical       |[0m The database cluster will be initialized with locale "C".
+[32mprimary-physical       |[0m The default database encoding has accordingly been set to "SQL_ASCII".
+[32mprimary-physical       |[0m The default text search configuration will be set to "english".
+[32mprimary-physical       |[0m 
+[32mprimary-physical       |[0m Data page checksums are disabled.
+[32mprimary-physical       |[0m 
+[32mprimary-physical       |[0m fixing permissions on existing directory /pgdata ... ok
+[32mprimary-physical       |[0m creating subdirectories ... ok
+[32mprimary-physical       |[0m selecting dynamic shared memory implementation ... posix
+[32mprimary-physical       |[0m selecting default max_connections ... 100
+[32mprimary-physical       |[0m selecting default shared_buffers ... 128MB
+[32mprimary-physical       |[0m selecting default time zone ... Etc/UTC
+[32mprimary-physical       |[0m creating configuration files ... ok
+[32mprimary-physical       |[0m running bootstrap script ... ok
+[32mprimary-physical       |[0m performing post-bootstrap initialization ... ok
+[32mprimary-physical       |[0m initdb: warning: enabling "trust" authentication for local connections
+[32mprimary-physical       |[0m You can change this by editing pg_hba.conf or using the option -A, or
+[32mprimary-physical       |[0m --auth-local and --auth-host, the next time you run initdb.
+[32mprimary-physical       |[0m syncing data to disk ... ok
+[32mprimary-physical       |[0m 
+[32mprimary-physical       |[0m 
+[32mprimary-physical       |[0m Success. You can now start the database server using:
+[32mprimary-physical       |[0m 
+[32mprimary-physical       |[0m     /home/terrier/repo/build/bin/pg_ctl -D /pgdata -l logfile start
+[32mprimary-physical       |[0m 
+[32mprimary-physical       |[0m waiting for server to start....2021-09-13 22:09:33.036 UTC [23] LOG:  starting PostgreSQL 13.4 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+[32mprimary-physical       |[0m 2021-09-13 22:09:33.036 UTC [23] LOG:  listening on IPv4 address "0.0.0.0", port 15721
+[32mprimary-physical       |[0m 2021-09-13 22:09:33.036 UTC [23] LOG:  listening on IPv6 address "::", port 15721
+[32mprimary-physical       |[0m 2021-09-13 22:09:33.041 UTC [23] LOG:  listening on Unix socket "/tmp/.s.PGSQL.15721"
+[32mprimary-physical       |[0m 2021-09-13 22:09:33.048 UTC [24] LOG:  database system was shut down at 2021-09-13 22:09:30 UTC
+[32mprimary-physical       |[0m 2021-09-13 22:09:33.051 UTC [23] LOG:  database system is ready to accept connections
+[32mprimary-physical       |[0m  done
+[32mprimary-physical       |[0m server started
+[32mprimary-physical       |[0m CREATE ROLE
+[32mprimary-physical       |[0m CREATE DATABASE
+[32mprimary-physical       |[0m GRANT ROLE
+[32mprimary-physical       |[0m ALTER ROLE
+[32mprimary-physical       |[0m CREATE ROLE
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.009 UTC [23] LOG:  received SIGHUP, reloading configuration files
+[32mprimary-physical       |[0m  pg_reload_conf 
+[32mprimary-physical       |[0m ----------------
+[32mprimary-physical       |[0m  t
+[32mprimary-physical       |[0m (1 row)
+[32mprimary-physical       |[0m 
+[32mprimary-physical       |[0m slot1
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.009 UTC [23] LOG:  parameter "hot_standby_feedback" changed to "on"
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.009 UTC [23] LOG:  parameter "max_connections" cannot be changed without restarting the server
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.009 UTC [23] LOG:  parameter "shared_buffers" cannot be changed without restarting the server
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.009 UTC [23] LOG:  parameter "effective_cache_size" changed to "48GB"
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.009 UTC [23] LOG:  parameter "maintenance_work_mem" changed to "2GB"
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.009 UTC [23] LOG:  parameter "checkpoint_completion_target" changed to "0.9"
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.009 UTC [23] LOG:  parameter "wal_buffers" cannot be changed without restarting the server
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.009 UTC [23] LOG:  parameter "random_page_cost" changed to "1.1"
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.009 UTC [23] LOG:  parameter "effective_io_concurrency" changed to "200"
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.009 UTC [23] LOG:  parameter "work_mem" changed to "13981kB"
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.009 UTC [23] LOG:  parameter "min_wal_size" changed to "2GB"
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.009 UTC [23] LOG:  parameter "max_wal_size" changed to "8GB"
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.009 UTC [23] LOG:  parameter "max_worker_processes" cannot be changed without restarting the server
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.009 UTC [23] LOG:  parameter "max_parallel_workers_per_gather" changed to "4"
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.009 UTC [23] LOG:  parameter "max_parallel_workers" changed to "12"
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.009 UTC [23] LOG:  parameter "max_parallel_maintenance_workers" changed to "4"
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.009 UTC [23] LOG:  configuration file "/pgdata/postgresql.auto.conf" contains errors; unaffected changes were applied
+[32mprimary-physical       |[0m slot1
+[32mprimary-physical       |[0m  pg_create_physical_replication_slot 
+[32mprimary-physical       |[0m -------------------------------------
+[32mprimary-physical       |[0m  (slot1,)
+[32mprimary-physical       |[0m (1 row)
+[32mprimary-physical       |[0m 
+[32mprimary-physical       |[0m waiting for server to shut down....2021-09-13 22:09:34.031 UTC [23] LOG:  received fast shutdown request
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.034 UTC [23] LOG:  aborting any active transactions
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.034 UTC [23] LOG:  background worker "logical replication launcher" (PID 30) exited with exit code 1
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.034 UTC [25] LOG:  shutting down
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.065 UTC [23] LOG:  database system is shut down
+[32mprimary-physical       |[0m  done
+[32mprimary-physical       |[0m server stopped
+[33mreplica-physical       |[0m 2021-09-13 22:09:34.299 UTC [20] FATAL:  could not connect to the primary server: could not connect to server: Connection refused
+[33mreplica-physical       |[0m 		Is the server running on host "primary-physical" (172.19.0.4) and accepting
+[33mreplica-physical       |[0m 		TCP/IP connections on port 15721?
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.308 UTC [49] LOG:  starting PostgreSQL 13.4 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.308 UTC [49] LOG:  listening on IPv4 address "0.0.0.0", port 15721
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.308 UTC [49] LOG:  listening on IPv6 address "::", port 15721
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.314 UTC [49] LOG:  listening on Unix socket "/tmp/.s.PGSQL.15721"
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.320 UTC [51] LOG:  database system was shut down at 2021-09-13 22:09:34 UTC
+[32mprimary-physical       |[0m 2021-09-13 22:09:34.329 UTC [49] LOG:  database system is ready to accept connections
+[33mreplica-physical       |[0m 2021-09-13 22:09:39.305 UTC [21] FATAL:  database system identifier differs between the primary and standby
+[33mreplica-physical       |[0m 2021-09-13 22:09:39.305 UTC [21] DETAIL:  The primary's identifier is 7007543957826498575, the standby's identifier is 7007538597510037519.
+[33mreplica-physical exited with code 137
+[0m[35mreplica-physical       |[0m primary-physical:15721 - accepting connections
+[35mreplica-physical       |[0m Password: 
+[35mreplica-physical       |[0m waiting for checkpoint
+[35mreplica-physical       |[0m     0/30944 kB (0%), 0/1 tablespace
+[35mreplica-physical       |[0m 30954/30954 kB (100%), 0/1 tablespace
+[35mreplica-physical       |[0m 30954/30954 kB (100%), 1/1 tablespace
+[35mreplica-physical       |[0m 2021-09-13 22:09:55.479 UTC [13] LOG:  starting PostgreSQL 13.4 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+[35mreplica-physical       |[0m 2021-09-13 22:09:55.479 UTC [13] LOG:  listening on IPv4 address "0.0.0.0", port 15721
+[35mreplica-physical       |[0m 2021-09-13 22:09:55.479 UTC [13] LOG:  listening on IPv6 address "::", port 15721
+[35mreplica-physical       |[0m 2021-09-13 22:09:55.485 UTC [13] LOG:  listening on Unix socket "/tmp/.s.PGSQL.15721"
+[35mreplica-physical       |[0m 2021-09-13 22:09:55.491 UTC [14] LOG:  database system was interrupted; last known up at 2021-09-13 22:09:51 UTC
+[35mreplica-physical       |[0m 2021-09-13 22:09:55.569 UTC [14] LOG:  entering standby mode
+[35mreplica-physical       |[0m 2021-09-13 22:09:55.575 UTC [14] LOG:  redo starts at 0/2000028
+[35mreplica-physical       |[0m 2021-09-13 22:09:55.577 UTC [14] LOG:  consistent recovery state reached at 0/2000100
+[35mreplica-physical       |[0m 2021-09-13 22:09:55.578 UTC [13] LOG:  database system is ready to accept read only connections
+[35mreplica-physical       |[0m 2021-09-13 22:09:55.583 UTC [18] LOG:  started streaming WAL from primary at 0/3000000 on timeline 1
+[32mprimary-physical       |[0m 2021-09-13 22:13:45.437 UTC [113] LOG:  unexpected EOF on client connection with an open transaction
+[32mprimary-physical       |[0m 2021-09-13 22:13:45.437 UTC [108] LOG:  unexpected EOF on client connection with an open transaction
+[32mprimary-physical       |[0m 2021-09-13 22:13:45.438 UTC [111] LOG:  unexpected EOF on client connection with an open transaction
+[32mprimary-physical       |[0m 2021-09-13 22:13:55.500 UTC [64] LOG:  unexpected EOF on standby connection
+[32mprimary-physical       |[0m 2021-09-13 22:13:55.500 UTC [64] STATEMENT:  START_REPLICATION SLOT "slot1" 0/3000000 TIMELINE 1
+[32mprimary-physical exited with code 137
+[0m[35mreplica-physical exited with code 137
+[0m[34mprimary-physical       |[0m The files belonging to this database system will be owned by user "terrier".
+[34mprimary-physical       |[0m This user must also own the server process.
+[34mprimary-physical       |[0m 
+[34mprimary-physical       |[0m The database cluster will be initialized with locale "C".
+[34mprimary-physical       |[0m The default database encoding has accordingly been set to "SQL_ASCII".
+[34mprimary-physical       |[0m The default text search configuration will be set to "english".
+[34mprimary-physical       |[0m 
+[34mprimary-physical       |[0m Data page checksums are disabled.
+[34mprimary-physical       |[0m 
+[34mprimary-physical       |[0m fixing permissions on existing directory /pgdata ... ok
+[34mprimary-physical       |[0m creating subdirectories ... ok
+[34mprimary-physical       |[0m selecting dynamic shared memory implementation ... posix
+[34mprimary-physical       |[0m selecting default max_connections ... 100
+[34mprimary-physical       |[0m selecting default shared_buffers ... 128MB
+[34mprimary-physical       |[0m selecting default time zone ... Etc/UTC
+[34mprimary-physical       |[0m creating configuration files ... ok
+[34mprimary-physical       |[0m running bootstrap script ... ok
+[34mprimary-physical       |[0m performing post-bootstrap initialization ... ok
+[34mprimary-physical       |[0m syncing data to disk ... ok
+[34mprimary-physical       |[0m 
+[34mprimary-physical       |[0m 
+[34mprimary-physical       |[0m initdb: warning: enabling "trust" authentication for local connections
+[34mprimary-physical       |[0m You can change this by editing pg_hba.conf or using the option -A, or
+[34mprimary-physical       |[0m --auth-local and --auth-host, the next time you run initdb.
+[34mprimary-physical       |[0m Success. You can now start the database server using:
+[34mprimary-physical       |[0m 
+[34mprimary-physical       |[0m     /home/terrier/repo/build/bin/pg_ctl -D /pgdata -l logfile start
+[34mprimary-physical       |[0m 
+[34mprimary-physical       |[0m waiting for server to start....2021-09-13 22:13:57.782 UTC [23] LOG:  starting PostgreSQL 13.4 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+[34mprimary-physical       |[0m 2021-09-13 22:13:57.782 UTC [23] LOG:  listening on IPv4 address "0.0.0.0", port 15721
+[34mprimary-physical       |[0m 2021-09-13 22:13:57.782 UTC [23] LOG:  listening on IPv6 address "::", port 15721
+[34mprimary-physical       |[0m 2021-09-13 22:13:57.795 UTC [23] LOG:  listening on Unix socket "/tmp/.s.PGSQL.15721"
+[34mprimary-physical       |[0m 2021-09-13 22:13:57.806 UTC [24] LOG:  database system was shut down at 2021-09-13 22:13:57 UTC
+[34mprimary-physical       |[0m 2021-09-13 22:13:57.811 UTC [23] LOG:  database system is ready to accept connections
+[34mprimary-physical       |[0m  done
+[34mprimary-physical       |[0m server started
+[34mprimary-physical       |[0m CREATE ROLE
+[34mprimary-physical       |[0m CREATE DATABASE
+[34mprimary-physical       |[0m GRANT ROLE
+[34mprimary-physical       |[0m ALTER ROLE
+[34mprimary-physical       |[0m CREATE ROLE
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.226 UTC [23] LOG:  received SIGHUP, reloading configuration files
+[34mprimary-physical       |[0m  pg_reload_conf 
+[34mprimary-physical       |[0m ----------------
+[34mprimary-physical       |[0m  t
+[34mprimary-physical       |[0m (1 row)
+[34mprimary-physical       |[0m 
+[34mprimary-physical       |[0m slot1
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.227 UTC [23] LOG:  parameter "hot_standby_feedback" changed to "on"
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.227 UTC [23] LOG:  parameter "max_connections" cannot be changed without restarting the server
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.227 UTC [23] LOG:  parameter "shared_buffers" cannot be changed without restarting the server
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.227 UTC [23] LOG:  parameter "effective_cache_size" changed to "48GB"
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.227 UTC [23] LOG:  parameter "maintenance_work_mem" changed to "2GB"
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.227 UTC [23] LOG:  parameter "checkpoint_completion_target" changed to "0.9"
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.227 UTC [23] LOG:  parameter "wal_buffers" cannot be changed without restarting the server
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.227 UTC [23] LOG:  parameter "random_page_cost" changed to "1.1"
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.227 UTC [23] LOG:  parameter "effective_io_concurrency" changed to "200"
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.227 UTC [23] LOG:  parameter "work_mem" changed to "13981kB"
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.227 UTC [23] LOG:  parameter "min_wal_size" changed to "2GB"
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.227 UTC [23] LOG:  parameter "max_wal_size" changed to "8GB"
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.227 UTC [23] LOG:  parameter "max_worker_processes" cannot be changed without restarting the server
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.227 UTC [23] LOG:  parameter "max_parallel_workers_per_gather" changed to "4"
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.228 UTC [23] LOG:  parameter "max_parallel_workers" changed to "12"
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.228 UTC [23] LOG:  parameter "max_parallel_maintenance_workers" changed to "4"
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.228 UTC [23] LOG:  configuration file "/pgdata/postgresql.auto.conf" contains errors; unaffected changes were applied
+[34mprimary-physical       |[0m slot1
+[34mprimary-physical       |[0m  pg_create_physical_replication_slot 
+[34mprimary-physical       |[0m -------------------------------------
+[34mprimary-physical       |[0m  (slot1,)
+[34mprimary-physical       |[0m (1 row)
+[34mprimary-physical       |[0m 
+[34mprimary-physical       |[0m waiting for server to shut down....2021-09-13 22:13:59.258 UTC [23] LOG:  received fast shutdown request
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.263 UTC [23] LOG:  aborting any active transactions
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.263 UTC [23] LOG:  background worker "logical replication launcher" (PID 30) exited with exit code 1
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.263 UTC [25] LOG:  shutting down
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.306 UTC [23] LOG:  database system is shut down
+[34mprimary-physical       |[0m  done
+[34mprimary-physical       |[0m server stopped
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.546 UTC [49] LOG:  starting PostgreSQL 13.4 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.546 UTC [49] LOG:  listening on IPv4 address "0.0.0.0", port 15721
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.546 UTC [49] LOG:  listening on IPv6 address "::", port 15721
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.555 UTC [49] LOG:  listening on Unix socket "/tmp/.s.PGSQL.15721"
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.567 UTC [51] LOG:  database system was shut down at 2021-09-13 22:13:59 UTC
+[34mprimary-physical       |[0m 2021-09-13 22:13:59.586 UTC [49] LOG:  database system is ready to accept connections
+[36;1mreplica-physical       |[0m primary-physical:15721 - accepting connections
+[36;1mreplica-physical       |[0m Password: 
+[36;1mreplica-physical       |[0m waiting for checkpoint
+[36;1mreplica-physical       |[0m     0/30944 kB (0%), 0/1 tablespace
+[36;1mreplica-physical       |[0m 30954/30954 kB (100%), 0/1 tablespace
+[36;1mreplica-physical       |[0m 30954/30954 kB (100%), 1/1 tablespace
+[36;1mreplica-physical       |[0m 2021-09-13 22:14:12.105 UTC [13] LOG:  starting PostgreSQL 13.4 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+[36;1mreplica-physical       |[0m 2021-09-13 22:14:12.105 UTC [13] LOG:  listening on IPv4 address "0.0.0.0", port 15721
+[36;1mreplica-physical       |[0m 2021-09-13 22:14:12.105 UTC [13] LOG:  listening on IPv6 address "::", port 15721
+[36;1mreplica-physical       |[0m 2021-09-13 22:14:12.111 UTC [13] LOG:  listening on Unix socket "/tmp/.s.PGSQL.15721"
+[36;1mreplica-physical       |[0m 2021-09-13 22:14:12.121 UTC [14] LOG:  database system was interrupted; last known up at 2021-09-13 22:14:08 UTC
+[36;1mreplica-physical       |[0m 2021-09-13 22:14:12.205 UTC [14] LOG:  entering standby mode
+[36;1mreplica-physical       |[0m 2021-09-13 22:14:12.210 UTC [14] LOG:  redo starts at 0/2000028
+[36;1mreplica-physical       |[0m 2021-09-13 22:14:12.213 UTC [14] LOG:  consistent recovery state reached at 0/2000100
+[36;1mreplica-physical       |[0m 2021-09-13 22:14:12.213 UTC [13] LOG:  database system is ready to accept read only connections
+[36;1mreplica-physical       |[0m 2021-09-13 22:14:12.218 UTC [18] LOG:  started streaming WAL from primary at 0/3000000 on timeline 1
+[34mprimary-physical       |[0m 2021-09-13 22:18:14.231 UTC [107] LOG:  unexpected EOF on client connection with an open transaction
+[34mprimary-physical       |[0m 2021-09-13 22:18:14.231 UTC [111] LOG:  unexpected EOF on client connection with an open transaction
+[34mprimary-physical       |[0m 2021-09-13 22:18:14.231 UTC [104] LOG:  unexpected EOF on client connection with an open transaction
+[34mprimary-physical       |[0m 2021-09-13 22:18:14.231 UTC [106] LOG:  unexpected EOF on client connection with an open transaction
+[34mprimary-physical       |[0m 2021-09-13 22:18:14.231 UTC [112] LOG:  unexpected EOF on client connection with an open transaction
+[34mprimary-physical       |[0m 2021-09-13 22:18:14.231 UTC [103] LOG:  unexpected EOF on client connection with an open transaction
+[34mprimary-physical       |[0m 2021-09-13 22:18:14.231 UTC [105] LOG:  unexpected EOF on client connection with an open transaction
+[34mprimary-physical       |[0m 2021-09-13 22:18:24.301 UTC [63] LOG:  unexpected EOF on standby connection
+[34mprimary-physical       |[0m 2021-09-13 22:18:24.301 UTC [63] STATEMENT:  START_REPLICATION SLOT "slot1" 0/3000000 TIMELINE 1
+[36;1mreplica-physical exited with code 137
+[0m
