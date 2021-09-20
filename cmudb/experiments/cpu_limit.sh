@@ -58,6 +58,8 @@ set -x
 wait $EXECUTE_PID
 kill $MONITORING_PID_PRIMARY
 kill $MONITORING_PID_REPLICA
+# heck.
+sudo kill -9 $(ps aux | grep wanshenl | grep docker | grep nc | awk '{print $2}')
 #kill $POSTGRES_PID
 
 kill_descendant_processes() {
