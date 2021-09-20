@@ -45,10 +45,11 @@ cd -
 echo 'Timestamp|Replay Lag (microseconds)' > cpu_${CPUS}_replay_lag.txt
 
 set +x
-for i in {0..$EXPECTED_BENCHBASE_DURATION..1}
-do
+i = 1
+while [ "$i" -le "$EXPECTED_BENCHBASE_DURATION" ]; do
   PGPASSWORD=terrier psql -h localhost -p 15721 -U noisepage -c 'select current_timestamp, extract(microseconds from replay_lag) from pg_stat_replication;' --tuples-only --no-align >> cpu_${CPUS}_replay_lag.txt
   sleep 1
+  i=$(($i + 1))
 done
 set -x
 
