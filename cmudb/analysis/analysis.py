@@ -3,6 +3,7 @@ import json
 import sys
 
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 
 
@@ -23,7 +24,7 @@ def _json_flatten(nested_json):
   return result
 
 
-def _augment_stats(df):
+def _augment_stats(df, cpu):
   # Time conversions.
   df.at[0, 'preread'] = pd.NA
   for col in ['read', 'preread']:
@@ -79,20 +80,30 @@ def _augment_stats(df):
     df[f'IO_DiffRequests_{opname}'] = df[f'IO_TotalRequests_{opname}'].diff()
     df[f'IO_DiffBytes_{opname}'] = df[f'IO_TotalBytes_{opname}'].diff()
 
+  df['cpu'] = str(cpu)
+  df['fake_time'] = pd.Series(range(len(df)))
+
   return df
 
 
-def parse_docker_stats(fpath):
+def parse_docker_stats(fpath, cpu):
   df_vals = []
   with open(fpath, 'r', encoding='utf8') as f:
     for line in f:
       df_vals.append(pd.Series(_json_flatten(json.loads(line))))
-  return _augment_stats(pd.DataFrame(df_vals))
+  return _augment_stats(pd.DataFrame(df_vals), cpu)
+
+
+def parse_replay_lag(fpath, cpu):
+  df = pd.read_csv(fpath, sep='|')
+  df['cpu'] = str(cpu)
+  df['fake_time'] = pd.Series(range(len(df)))
+  return df
 
 
 def main():
   parser = argparse.ArgumentParser(description='Process the stats that were output by Docker.')
-  parser.add_argument('docker_stats_file', help='Path to the docker stats file to analyze.')
+  parser.add_argument('data_files', help='Path to the data files to analyze.')
   parser.add_argument('--instructions', action='store_true', help='Print the instructions for gathering stats, and then quit.')
   args = parser.parse_args()
 
@@ -101,8 +112,45 @@ def main():
     print(r'echo -ne "GET /containers/CONTAINER/stats HTTP/1.1\r\nHost: woof\r\n\r\n" | sudo nc -U /var/run/docker.sock | grep "^{" > docker_stats_CONTAINER.txt')
     sys.exit(0)
 
-  df = parse_docker_stats(args.docker_stats_file)
-  df.plot(x='read', y=['IO_DiffBytes_Read', 'IO_DiffBytes_Write', 'IO_DiffBytes_Total'])
+  cpus = [str(x) for x in [0.5, 0.25, 0.2, 0.15, 0.1, 0.09, 0.08, 0.07, 0.06, 0.05]]
+  primary_stats_files = [(f'{args.data_files}/cpu_{cpu}_docker_stats_primary.txt', cpu) for cpu in cpus]
+  replica_stats_files = [(f'{args.data_files}/cpu_{cpu}_docker_stats_replica.txt', cpu) for cpu in cpus]
+  replay_lag_files = [(f'{args.data_files}/cpu_{cpu}_replay_lag.txt', cpu) for cpu in cpus]
+
+  primary_stats = pd.concat([parse_docker_stats(f, cpu) for f, cpu in primary_stats_files], ignore_index=True)
+  replica_stats = pd.concat([parse_docker_stats(f, cpu) for f, cpu in replica_stats_files], ignore_index=True)
+  replay_lag = pd.concat([parse_replay_lag(f, cpu) for f, cpu in replay_lag_files], ignore_index=True)
+
+  def get_cpu(df, cpu):
+    return df[df['cpu'] == str(cpu)]
+
+  # cpus = [str(x) for x in [0.5, 0.25, 0.2, 0.15, 0.1, 0.09, 0.08, 0.07, 0.06, 0.05]]
+  cpus = [str(x) for x in [0.5, 0.25, 0.08]]
+  plotters = [
+    ('IO_DiffBytes_Total', 'IO Total Per Sec'),
+    ('cpu_usage_%', 'CPU Usage Per Sec'),
+    ('memory_usage_%', 'Memory Usage Per Sec'),
+  ]
+
+  for attribute, ylabel in plotters:
+    fig, ax1 = plt.subplots(figsize=(16,6))
+    ax2 = ax1.twinx()
+
+    colors = plt.cm.tab20(np.linspace(0, 1, len(cpus)*2))
+    color_i = 0
+
+    for cpu in cpus:
+      get_cpu(primary_stats, cpu).plot(x='fake_time', y=attribute, ax=ax1, ylabel=f'{ylabel} (Primary)', label=f'Primary {cpu}', color=colors[color_i])
+      get_cpu(replica_stats, 0.5).plot(x='fake_time', y=attribute, ax=ax2, ylabel=f'{ylabel} (Replica)', label=f'Replica {cpu}', color=colors[color_i+1])
+      color_i += 2
+    lines1, labels1 = ax1.get_legend_handles_labels()
+    lines2, labels2 = ax2.get_legend_handles_labels()
+    lines, labels = lines1 + lines2, labels1 + labels2
+    ax2.legend(lines, labels, loc=0)
+
+    fig.tight_layout()
+    plt.title(f'{ylabel} (Primary, Replica) for various CPU limits')
+
   plt.show()
 
 
