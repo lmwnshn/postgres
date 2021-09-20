@@ -21,6 +21,7 @@ ENV PGPORT "15721"
 ENV BIN_DIR "/home/terrier/repo/build/bin"
 
 # Install packages.
+COPY ./cmudb/env/apt_for_pdl.conf /etc/apt/apt.conf
 COPY ./cmudb/env/packages.sh /packages.sh
 RUN \
     apt-get -y update \

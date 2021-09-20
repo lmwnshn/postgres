@@ -9,7 +9,7 @@ set -x
 
 HOME_DIR="/home/wanshenl"
 BENCHBASE_BIN_DIR="$HOME_DIR/benchbase/target/benchbase-2021-SNAPSHOT"
-BENCHBASE_CONFIG_DIR="$HOME_DIR/benchbase/postgres"
+BENCHBASE_CONFIG_DIR="$HOME_DIR/config/benchbase/postgres"
 
 docker-compose -f ./cmudb/env/docker-compose-replication.yml up --force-recreate &
 POSTGRES_PID=$!
