@@ -195,13 +195,17 @@ _pg_setup_replication() {
 
 # All the steps required to start up PostgreSQL.
 _pg_start_all() {
-  _pg_initdb              # Initialize a new PostgreSQL cluster.
-  _pg_config              # Write any configuration options required.
-  _pgctl_start            # Start the PostgreSQL cluster.
-  _pg_create_user_and_db  # Create the specified user and database.
+  if [ -e "${PGDATA}/base" ]; then
+    _pgctl_start
+  else
+    _pg_initdb              # Initialize a new PostgreSQL cluster.
+    _pg_config              # Write any configuration options required.
+    _pgctl_start            # Start the PostgreSQL cluster.
+    _pg_create_user_and_db  # Create the specified user and database.
 
-  if [ ! -z "${NP_REPLICATION_TYPE}" ]; then
-    _pg_setup_replication
+    if [ ! -z "${NP_REPLICATION_TYPE}" ]; then
+      _pg_setup_replication
+    fi
   fi
 }
 
