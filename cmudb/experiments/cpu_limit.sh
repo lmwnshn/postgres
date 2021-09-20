@@ -29,12 +29,12 @@ while true ; do
   sleep 10
 done
 
-./cmudb/experiments/capture_docker_stats.sh primary-physical &
+./cmudb/experiments/capture_docker_stats.sh primary &
 MONITORING_PID_PRIMARY=$!
-./cmudb/experiments/capture_docker_stats.sh replica-physical &
+./cmudb/experiments/capture_docker_stats.sh replica &
 MONITORING_PID_REPLICA=$!
 
-docker update replica-physical --cpus ${CPUS}
+docker update replica --cpus ${CPUS}
 
 java -jar $BENCHBASE_BIN_DIR/benchbase.jar -b ycsb -c $BENCHBASE_CONFIG_DIR/sample_ycsb_config.xml --execute=true 2>&1 > cpu_${CPUS}_ycsb.txt &
 EXECUTE_PID=$!

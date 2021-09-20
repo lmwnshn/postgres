@@ -2,7 +2,7 @@ version: '3'
 services:
   np-primary:
     image: pgnp:latest
-    container_name: primary-physical
+    container_name: primary
     ports:
       - "15721:15721"
     environment:
@@ -15,15 +15,17 @@ services:
       - POSTGRES_DB=noisepage
       - POSTGRES_PASSWORD=terrier
       - POSTGRES_USER=noisepage
-  np-replica-physical:
+    volumes:
+      - pgdata-primary:/pgdata
+  np-replica:
     image: pgnp:latest
-    container_name: replica-physical
+    container_name: replica
     depends_on:
       - np-primary
     ports:
       - "15722:15721"
     environment:
-      - NP_PRIMARY_NAME=primary-physical
+      - NP_PRIMARY_NAME=primary
       - NP_PRIMARY_PORT=15721
       - NP_PRIMARY_USERNAME=noisepage
       - NP_REPLICATION_PASSWORD=passyMcPassword
@@ -34,6 +36,8 @@ services:
       - POSTGRES_DB=noisepage
       - POSTGRES_PASSWORD=terrier
       - POSTGRES_USER=noisepage
+    volumes:
+      - pgdata-replica:/pgdata
 #  np-replica-logical:
 #    image: pgnp:latest
 #    container_name: replica-logical-test
@@ -48,3 +52,6 @@ services:
 #      - POSTGRES_DB=noisepage
 #      - POSTGRES_PASSWORD=terrier
 #      - POSTGRES_USER=noisepage
+volumes:
+  pgdata-primary:
+  pgdata-replica:
