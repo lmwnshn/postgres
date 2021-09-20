@@ -30,9 +30,9 @@ while true ; do
   sleep 10
 done
 
-./cmudb/experiments/capture_docker_stats.sh primary &
+./cmudb/experiments/capture_docker_stats.sh primary cpu_${CPUS}_docker_stats_primary.txt &
 MONITORING_PID_PRIMARY=$!
-./cmudb/experiments/capture_docker_stats.sh replica &
+./cmudb/experiments/capture_docker_stats.sh replica cpu_${CPUS}_docker_stats_primary.txt &
 MONITORING_PID_REPLICA=$!
 
 docker update replica --cpus ${CPUS}
