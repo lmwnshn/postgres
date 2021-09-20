@@ -240,7 +240,12 @@ _main_replica() {
   _pg_start
 }
 
+_cleanup() {
+  _pg_stop
+}
+
 main() {
+  trap 'cleanup' SIGTERM
   if [ -z "${NP_REPLICATION_TYPE}" ] || [ "${NP_REPLICATION_TYPE}" = "primary" ]; then
     _main_primary
   elif [ "${NP_REPLICATION_TYPE}" = "replica" ]; then
