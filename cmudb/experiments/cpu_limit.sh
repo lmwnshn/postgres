@@ -20,6 +20,7 @@ cd $BENCHBASE_BIN_DIR
 #java -jar $BENCHBASE_BIN_DIR/benchbase.jar -b ycsb -c $BENCHBASE_CONFIG_DIR/sample_ycsb_config.xml --create=true
 #java -jar $BENCHBASE_BIN_DIR/benchbase.jar -b ycsb -c $BENCHBASE_CONFIG_DIR/sample_ycsb_config.xml --load=true
 PGPASSWORD=terrier psql -h localhost -U noisepage -p 15721 -c "VACUUM FULL;"
+cd -
 
 while true ; do
   SYNCED=$(PGPASSWORD=terrier psql -h localhost -p 15722 -U noisepage -c 'select pg_last_wal_receive_lsn() = pg_last_wal_replay_lsn();' --tuples-only --no-align)
@@ -36,9 +37,9 @@ MONITORING_PID_REPLICA=$!
 
 docker update replica --cpus ${CPUS}
 
+cd $BENCHBASE_BIN_DIR
 java -jar $BENCHBASE_BIN_DIR/benchbase.jar -b ycsb -c $BENCHBASE_CONFIG_DIR/sample_ycsb_config.xml --execute=true 2>&1 > cpu_${CPUS}_ycsb.txt &
 EXECUTE_PID=$!
-sleep $EXPECTED_BENCHBASE_DURATION
 cd -
 
 echo 'Timestamp|Replay Lag (microseconds)' > cpu_${CPUS}_replay_lag.txt
