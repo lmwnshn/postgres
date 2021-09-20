@@ -11,7 +11,7 @@ HOME_DIR="/home/wanshenl"
 BENCHBASE_BIN_DIR="$HOME_DIR/benchbase/target/benchbase-2021-SNAPSHOT"
 BENCHBASE_CONFIG_DIR="$HOME_DIR/benchbase/postgres"
 
-sudo docker-compose -f ./cmudb/env/docker-compose-replication.yml up --force-recreate &
+docker-compose -f ./cmudb/env/docker-compose-replication.yml up --force-recreate &
 POSTGRES_PID=$!
 
 sleep 45
@@ -29,12 +29,12 @@ while true ; do
   sleep 10
 done
 
-sudo ./cmudb/experiments/capture_docker_stats.sh primary-physical &
+./cmudb/experiments/capture_docker_stats.sh primary-physical &
 MONITORING_PID_PRIMARY=$!
-sudo ./cmudb/experiments/capture_docker_stats.sh replica-physical &
+./cmudb/experiments/capture_docker_stats.sh replica-physical &
 MONITORING_PID_REPLICA=$!
 
-sudo docker update replica-physical --cpus ${CPUS}
+docker update replica-physical --cpus ${CPUS}
 
 java -jar $BENCHBASE_BIN_DIR/benchbase.jar -b ycsb -c $BENCHBASE_CONFIG_DIR/sample_ycsb_config.xml --execute=true 2>&1 > cpu_${CPUS}_ycsb.txt &
 EXECUTE_PID=$!
