@@ -17,8 +17,8 @@ POSTGRES_PID=$!
 sleep 45
 
 cd $BENCHBASE_BIN_DIR
-java -jar $BENCHBASE_BIN_DIR/benchbase.jar -b ycsb -c $BENCHBASE_CONFIG_DIR/sample_ycsb_config.xml --create=true
-java -jar $BENCHBASE_BIN_DIR/benchbase.jar -b ycsb -c $BENCHBASE_CONFIG_DIR/sample_ycsb_config.xml --load=true
+#java -jar $BENCHBASE_BIN_DIR/benchbase.jar -b ycsb -c $BENCHBASE_CONFIG_DIR/sample_ycsb_config.xml --create=true
+#java -jar $BENCHBASE_BIN_DIR/benchbase.jar -b ycsb -c $BENCHBASE_CONFIG_DIR/sample_ycsb_config.xml --load=true
 PGPASSWORD=terrier psql -h localhost -U noisepage -p 15721 -c "VACUUM FULL;"
 
 while true ; do
