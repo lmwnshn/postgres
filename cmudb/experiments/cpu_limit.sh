@@ -2,7 +2,7 @@
 
 CPUS=$1
 
-EXPECTED_BENCHBASE_DURATION=60
+EXPECTED_BENCHBASE_DURATION=180
 
 set -e
 set -x
@@ -11,8 +11,8 @@ HOME_DIR="/home/wanshenl"
 BENCHBASE_BIN_DIR="$HOME_DIR/benchbase/target/benchbase-2021-SNAPSHOT"
 BENCHBASE_CONFIG_DIR="$HOME_DIR/config/benchbase/postgres"
 
-docker-compose -f ./cmudb/env/docker-compose-replication.yml up --force-recreate &
-POSTGRES_PID=$!
+#docker-compose -f ./cmudb/env/docker-compose-replication.yml up --force-recreate &
+#POSTGRES_PID=$!
 
 sleep 45
 
@@ -57,7 +57,7 @@ set -x
 wait $EXECUTE_PID
 kill $MONITORING_PID_PRIMARY
 kill $MONITORING_PID_REPLICA
-kill $POSTGRES_PID
+#kill $POSTGRES_PID
 
 kill_descendant_processes() {
     local pid="$1"
