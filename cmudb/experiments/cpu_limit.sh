@@ -32,7 +32,7 @@ done
 
 ./cmudb/experiments/capture_docker_stats.sh primary cpu_${CPUS}_docker_stats_primary.txt &
 MONITORING_PID_PRIMARY=$!
-./cmudb/experiments/capture_docker_stats.sh replica cpu_${CPUS}_docker_stats_primary.txt &
+./cmudb/experiments/capture_docker_stats.sh replica cpu_${CPUS}_docker_stats_replica.txt &
 MONITORING_PID_REPLICA=$!
 
 docker update replica --cpus ${CPUS}
