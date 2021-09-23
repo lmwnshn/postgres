@@ -50,7 +50,7 @@ def _augment_stats(df, benchmark):
   #   CPU usage % = (cpu_delta / system_cpu_delta) * number_cpus * 100.0
   df['used_memory'] = df['memory_stats.usage'] - df['memory_stats.stats.cache']
   df['available_memory'] = df['memory_stats.limit']
-  df['memory_usage_%'] = df['memory_stats.usage'] - df['memory_stats.stats.cache']
+  df['memory_usage_%'] = df['used_memory'] / df['available_memory'] * 100.0
   df['cpu_delta'] = df['cpu_stats.cpu_usage.total_usage'] - df['precpu_stats.cpu_usage.total_usage']
   df['system_cpu_delta'] = df['cpu_stats.system_cpu_usage'] - df['precpu_stats.system_cpu_usage']
   df['number_cpus'] = df['cpu_stats.online_cpus']
@@ -83,6 +83,9 @@ def _augment_stats(df, benchmark):
   df['benchmark'] = str(benchmark)
   df['elapsed_time'] = pd.Series(range(len(df)))
 
+  print(df['memory_stats.usage'])
+  print(df['memory_stats.stats.cache'])
+
   return df
 
 
@@ -113,8 +116,8 @@ def main():
     sys.exit(0)
 
   benchmarks = ['smallbank', 'tatp', 'tpcc', 'ycsb']
-  primary_stats_files = [(f'{args.data_files}/{benchmark}_docker_monitoring.txt', benchmark) for benchmark in benchmarks]
-  replica_stats_files = [(f'{args.data_files}/{benchmark}_docker_monitoring.txt', benchmark) for benchmark in benchmarks]
+  primary_stats_files = [(f'{args.data_files}/{benchmark}_docker_monitoring_primary.txt', benchmark) for benchmark in benchmarks]
+  replica_stats_files = [(f'{args.data_files}/{benchmark}_docker_monitoring_replica.txt', benchmark) for benchmark in benchmarks]
   replay_lag_files = [(f'{args.data_files}/{benchmark}_replication_lag.txt', benchmark) for benchmark in benchmarks]
 
   primary_stats = pd.concat([parse_docker_stats(f, b) for f, b in primary_stats_files], ignore_index=True)
@@ -125,9 +128,9 @@ def main():
     return df[df['benchmark'] == str(benchmark)]
 
   plotters = [
-    ('IO_DiffBytes_Total', 'IO Total Per Sec'),
-    ('cpu_usage_%', 'CPU Usage Per Sec'),
-    ('memory_usage_%', 'Memory Usage Per Sec'),
+    ('IO_DiffBytes_Total', 'IO Total Bytes Per Sec'),
+    ('cpu_usage_%', 'CPU Usage % Per Sec'),
+    ('memory_usage_%', 'Memory Usage % Per Sec'),
   ]
 
   for attribute, ylabel in plotters:
@@ -148,6 +151,12 @@ def main():
 
     fig.tight_layout()
     plt.title(f'{ylabel} (Primary, Replica) for various benchmarks')
+
+  fig, ax = plt.subplots(1, 1, figsize=(16,6))
+  for benchmark in benchmarks:
+    get_benchmark(replay_lag, benchmark)['Replay Lag (microseconds)'].plot(ylabel=f'Replay Lag (microseconds)', label=f'{benchmark}')
+  plt.legend()
+  plt.title('Replay Lag (microseconds)')
 
   plt.show()
 
