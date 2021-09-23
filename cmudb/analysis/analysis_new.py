@@ -24,7 +24,7 @@ def _json_flatten(nested_json):
   return result
 
 
-def _augment_stats(df, cpu):
+def _augment_stats(df, benchmark):
   # Time conversions.
   df.at[0, 'preread'] = pd.NA
   for col in ['read', 'preread']:
@@ -80,7 +80,7 @@ def _augment_stats(df, cpu):
     df[f'IO_DiffRequests_{opname}'] = df[f'IO_TotalRequests_{opname}'].diff()
     df[f'IO_DiffBytes_{opname}'] = df[f'IO_TotalBytes_{opname}'].diff()
 
-  df['benchmark'] = str(b)
+  df['benchmark'] = str(benchmark)
   df['elapsed_time'] = pd.Series(range(len(df)))
 
   return df
@@ -114,8 +114,8 @@ def main():
 
   benchmarks = ['smallbank', 'tatp', 'tpcc', 'ycsb']
   primary_stats_files = [(f'{args.data_files}/{benchmark}_docker_monitoring.txt', benchmark) for benchmark in benchmarks]
-  replica_stats_files = [(f'{args.data_files}/{benchmark_docker_monitoring}.txt', benchmark) for benchmark in benchmarks]
-  replay_lag_files = [(f'{args.data_files}/{benchmark}_replay_lag.txt', benchmark) for benchmark in benchmarks]
+  replica_stats_files = [(f'{args.data_files}/{benchmark}_docker_monitoring.txt', benchmark) for benchmark in benchmarks]
+  replay_lag_files = [(f'{args.data_files}/{benchmark}_replication_lag.txt', benchmark) for benchmark in benchmarks]
 
   primary_stats = pd.concat([parse_docker_stats(f, b) for f, b in primary_stats_files], ignore_index=True)
   replica_stats = pd.concat([parse_docker_stats(f, b) for f, b in replica_stats_files], ignore_index=True)
@@ -124,8 +124,6 @@ def main():
   def get_benchmark(df, benchmark):
     return df[df['benchmark'] == str(benchmark)]
 
-  # cpus = [str(x) for x in [0.5, 0.25, 0.2, 0.15, 0.1, 0.09, 0.08, 0.07, 0.06, 0.05]]
-  cpus = [str(x) for x in [0.5, 0.25, 0.08]]
   plotters = [
     ('IO_DiffBytes_Total', 'IO Total Per Sec'),
     ('cpu_usage_%', 'CPU Usage Per Sec'),
@@ -136,7 +134,7 @@ def main():
     fig, ax1 = plt.subplots(figsize=(16,6))
     ax2 = ax1.twinx()
 
-    colors = plt.cm.tab20(np.linspace(0, 1, len(cpus)*2))
+    colors = plt.cm.tab20(np.linspace(0, 1, len(benchmarks)*2))
     color_i = 0
 
     for benchmark in benchmarks:
