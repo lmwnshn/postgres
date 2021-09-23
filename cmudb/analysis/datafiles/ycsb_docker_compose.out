@@ -1,0 +1,32 @@
+Recreating primary ... 
+[1A[2KRecreating primary ... [32mdone[0m[1BAttaching to primary
+[36mprimary       |[0m pg_ctl: another server might be running; trying to start server anyway
+[36mprimary       |[0m waiting for server to start....2021-09-23 14:11:40.641 UTC [10] LOG:  starting PostgreSQL 13.4 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+[36mprimary       |[0m 2021-09-23 14:11:40.641 UTC [10] LOG:  listening on IPv4 address "0.0.0.0", port 15721
+[36mprimary       |[0m 2021-09-23 14:11:40.641 UTC [10] LOG:  listening on IPv6 address "::", port 15721
+[36mprimary       |[0m 2021-09-23 14:11:40.642 UTC [10] LOG:  listening on Unix socket "/tmp/.s.PGSQL.15721"
+[36mprimary       |[0m 2021-09-23 14:11:40.645 UTC [11] LOG:  database system was interrupted; last known up at 2021-09-23 14:08:32 UTC
+[36mprimary       |[0m 2021-09-23 14:11:40.743 UTC [11] LOG:  database system was not properly shut down; automatic recovery in progress
+[36mprimary       |[0m 2021-09-23 14:11:40.744 UTC [11] LOG:  redo starts at 12/7B000028
+[36mprimary       |[0m 2021-09-23 14:11:40.744 UTC [11] LOG:  invalid record length at 12/7C000060: wanted 24, got 0
+[36mprimary       |[0m 2021-09-23 14:11:40.744 UTC [11] LOG:  redo done at 12/7C000028
+[36mprimary       |[0m 2021-09-23 14:11:40.810 UTC [10] LOG:  database system is ready to accept connections
+[36mprimary       |[0m  done
+[36mprimary       |[0m server started
+[36mprimary       |[0m waiting for server to shut down....2021-09-23 14:11:40.896 UTC [10] LOG:  received fast shutdown request
+[36mprimary       |[0m 2021-09-23 14:11:40.897 UTC [10] LOG:  aborting any active transactions
+[36mprimary       |[0m 2021-09-23 14:11:40.898 UTC [10] LOG:  background worker "logical replication launcher" (PID 17) exited with exit code 1
+[36mprimary       |[0m 2021-09-23 14:11:40.898 UTC [12] LOG:  shutting down
+[36mprimary       |[0m 2021-09-23 14:11:41.029 UTC [10] LOG:  database system is shut down
+[36mprimary       |[0m  done
+[36mprimary       |[0m server stopped
+[36mprimary       |[0m 2021-09-23 14:11:41.359 UTC [20] LOG:  starting PostgreSQL 13.4 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+[36mprimary       |[0m 2021-09-23 14:11:41.359 UTC [20] LOG:  listening on IPv4 address "0.0.0.0", port 15721
+[36mprimary       |[0m 2021-09-23 14:11:41.359 UTC [20] LOG:  listening on IPv6 address "::", port 15721
+[36mprimary       |[0m 2021-09-23 14:11:41.360 UTC [20] LOG:  listening on Unix socket "/tmp/.s.PGSQL.15721"
+[36mprimary       |[0m 2021-09-23 14:11:41.363 UTC [22] LOG:  database system was shut down at 2021-09-23 14:11:40 UTC
+[36mprimary       |[0m 2021-09-23 14:11:41.366 UTC [20] LOG:  database system is ready to accept connections
+[36mprimary       |[0m 2021-09-23 14:20:03.824 UTC [59] LOG:  unexpected EOF on standby connection
+[36mprimary       |[0m 2021-09-23 14:20:03.824 UTC [59] STATEMENT:  START_REPLICATION SLOT "slot1" 12/7E000000 TIMELINE 1
+Stopping primary   ... 
+[1A[2KStopping primary   ... [32mdone[0m[1BGracefully stopping... (press Ctrl+C again to force)

@@ -1,0 +1,55 @@
+[INFO ] 2021-09-23 09:42:51,226 [main]  com.oltpbenchmark.DBWorkload main - ======================================================================
+
+Benchmark:     SMALLBANK {com.oltpbenchmark.benchmarks.smallbank.SmallBankBenchmark}
+Configuration: /home/wanshenl/config/benchbase/postgres/sample_smallbank_config.xml
+Type:          POSTGRES
+Driver:        org.postgresql.Driver
+URL:           jdbc:postgresql://localhost:15721/noisepage?preferQueryMode=extended&sslmode=disable
+Isolation:     TRANSACTION_READ_COMMITTED
+Scale Factor:  10.0
+
+[INFO ] 2021-09-23 09:42:51,228 [main]  com.oltpbenchmark.DBWorkload main - ======================================================================
+[INFO ] 2021-09-23 09:42:51,606 [main]  com.oltpbenchmark.DBWorkload runWorkload - Creating 10 virtual terminals...
+[INFO ] 2021-09-23 09:42:51,688 [main]  com.oltpbenchmark.DBWorkload runWorkload - Launching the SMALLBANK Benchmark with 1 Phase...
+[INFO ] 2021-09-23 09:42:51,704 [main]  com.oltpbenchmark.ThreadBench runRateLimitedMultiPhase - [0;1mPHASE START[0;0m :: [Workload=SMALLBANK] [Serial=false] [Time=180] [WarmupTime=0] [Rate=unlimited] [Arrival=REGULAR] [Ratios=[15.0, 15.0, 15.0, 25.0, 15.0, 15.0]] [ActiveWorkers=10]
+[INFO ] 2021-09-23 09:42:52,699 [main]  com.oltpbenchmark.ThreadBench runRateLimitedMultiPhase - [0;1mMEASURE[0;0m :: Warmup complete, starting measurements.
+[INFO ] 2021-09-23 09:45:52,700 [main]  com.oltpbenchmark.ThreadBench runRateLimitedMultiPhase - [0;1mTERMINATE[0;0m :: Waiting for all terminals to finish ..
+[INFO ] 2021-09-23 09:45:52,707 [Thread-10]  com.oltpbenchmark.ThreadBench run - Starting WatchDogThread
+[INFO ] 2021-09-23 09:45:53,670 [main]  com.oltpbenchmark.DBWorkload runWorkload - ======================================================================
+[INFO ] 2021-09-23 09:45:53,677 [main]  com.oltpbenchmark.DBWorkload runWorkload - Rate limited reqs/s: Results(nanoSeconds=180000624926, measuredRequests=4592888) = 25515.955857865385 requests/sec
+[INFO ] 2021-09-23 09:45:53,727 [main]  com.oltpbenchmark.DBWorkload writeOutputs - Output Raw data into file: smallbank_2021-09-23_09-45-53.raw.csv
+[INFO ] 2021-09-23 09:46:09,481 [main]  com.oltpbenchmark.DBWorkload writeOutputs - Output samples into file: smallbank_2021-09-23_09-45-53.samples.csv
+[INFO ] 2021-09-23 09:46:09,810 [main]  com.oltpbenchmark.DBWorkload writeOutputs - Output summary data into file: smallbank_2021-09-23_09-45-53.summary.json
+[INFO ] 2021-09-23 09:46:09,816 [main]  com.oltpbenchmark.DBWorkload writeOutputs - Output DBMS parameters into file: smallbank_2021-09-23_09-45-53.params.json
+[INFO ] 2021-09-23 09:46:09,823 [main]  com.oltpbenchmark.DBWorkload writeOutputs - Output DBMS metrics into file: smallbank_2021-09-23_09-45-53.metrics.json
+[INFO ] 2021-09-23 09:46:09,832 [main]  com.oltpbenchmark.DBWorkload writeOutputs - Output benchmark config into file: smallbank_2021-09-23_09-45-53.config.xml
+[INFO ] 2021-09-23 09:46:09,872 [main]  com.oltpbenchmark.DBWorkload writeOutputs - Output results into file: smallbank_2021-09-23_09-45-53.results.csv with window size 5
+[INFO ] 2021-09-23 09:46:10,704 [main]  com.oltpbenchmark.DBWorkload writeHistograms - ======================================================================
+[INFO ] 2021-09-23 09:46:10,704 [main]  com.oltpbenchmark.DBWorkload writeHistograms - Workload Histograms:
+
+[0;1mCompleted Transactions:[0;0m
+com.oltpbenchmark.benchmarks.smallbank.procedures.Amalgamate/01                  [ 690365] *************************************************
+com.oltpbenchmark.benchmarks.smallbank.procedures.Balance/02                     [ 691359] *************************************************
+com.oltpbenchmark.benchmarks.smallbank.procedures.DepositChecking/03             [ 689956] *************************************************
+com.oltpbenchmark.benchmarks.smallbank.procedures.SendPayment/04                 [1112349] ********************************************************************************
+com.oltpbenchmark.benchmarks.smallbank.procedures.TransactSavings/05             [ 668632] ************************************************
+com.oltpbenchmark.benchmarks.smallbank.procedures.WriteCheck/06                  [ 690312] *************************************************
+
+[0;1mAborted Transactions:[0;0m
+com.oltpbenchmark.benchmarks.smallbank.procedures.SendPayment/04                 [39094] ********************************************************************************
+com.oltpbenchmark.benchmarks.smallbank.procedures.TransactSavings/05             [22063] *********************************************
+
+[0;1mRejected Transactions (Server Retry):[0;0m
+<EMPTY>
+
+[0;1mRejected Transactions (Retry Different):[0;0m
+<EMPTY>
+
+[0;1mUnexpected SQL Errors:[0;0m
+<EMPTY>
+
+[0;1mUnknown Status Transactions:[0;0m
+<EMPTY>
+
+
+[INFO ] 2021-09-23 09:46:10,704 [main]  com.oltpbenchmark.DBWorkload writeHistograms - ======================================================================

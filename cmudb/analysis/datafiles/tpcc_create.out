@@ -1,0 +1,14 @@
+[INFO ] 2021-09-23 09:59:36,519 [main]  com.oltpbenchmark.DBWorkload main - ======================================================================
+
+Benchmark:     TPCC {com.oltpbenchmark.benchmarks.tpcc.TPCCBenchmark}
+Configuration: /home/wanshenl/config/benchbase/postgres/sample_tpcc_config.xml
+Type:          POSTGRES
+Driver:        org.postgresql.Driver
+URL:           jdbc:postgresql://localhost:15721/noisepage?preferQueryMode=extended&sslmode=disable
+Isolation:     TRANSACTION_READ_COMMITTED
+Scale Factor:  10.0
+
+[INFO ] 2021-09-23 09:59:36,521 [main]  com.oltpbenchmark.DBWorkload main - ======================================================================
+[INFO ] 2021-09-23 09:59:36,547 [main]  com.oltpbenchmark.DBWorkload main - Creating new TPCC database...
+[INFO ] 2021-09-23 09:59:36,913 [main]  com.oltpbenchmark.DBWorkload main - Finished creating new TPCC database...
+[INFO ] 2021-09-23 09:59:37,220 [main]  com.oltpbenchmark.DBWorkload main - Skipping benchmark workload execution

@@ -1,0 +1,14 @@
+[INFO ] 2021-09-23 10:12:41,876 [main]  com.oltpbenchmark.DBWorkload main - ======================================================================
+
+Benchmark:     YCSB {com.oltpbenchmark.benchmarks.ycsb.YCSBBenchmark}
+Configuration: /home/wanshenl/config/benchbase/postgres/sample_ycsb_config.xml
+Type:          POSTGRES
+Driver:        org.postgresql.Driver
+URL:           jdbc:postgresql://localhost:15721/noisepage?preferQueryMode=extended&sslmode=disable
+Isolation:     TRANSACTION_READ_COMMITTED
+Scale Factor:  10.0
+
+[INFO ] 2021-09-23 10:12:41,878 [main]  com.oltpbenchmark.DBWorkload main - ======================================================================
+[INFO ] 2021-09-23 10:12:41,904 [main]  com.oltpbenchmark.DBWorkload main - Creating new YCSB database...
+[INFO ] 2021-09-23 10:12:41,989 [main]  com.oltpbenchmark.DBWorkload main - Finished creating new YCSB database...
+[INFO ] 2021-09-23 10:12:42,293 [main]  com.oltpbenchmark.DBWorkload main - Skipping benchmark workload execution

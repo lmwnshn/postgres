@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<parameters>
+
+    <!-- Connection details -->
+    <type>POSTGRES</type>
+    <driver>org.postgresql.Driver</driver>
+    <url>jdbc:postgresql://localhost:15721/noisepage?preferQueryMode=extended&amp;sslmode=disable</url>
+    <username>noisepage</username>
+    <password>terrier</password>
+    <isolation>TRANSACTION_READ_COMMITTED</isolation>
+    <batchsize>128</batchsize>
+
+    <!-- Scalefactor increases the number of subscribers -->
+    <scalefactor>10</scalefactor>
+
+    <!-- The workload -->
+    <terminals>10</terminals>
+    <works>
+        <work>
+            <time>180</time>
+            <rate>unlimited</rate>
+            <weights>2, 35, 10, 35, 2, 14, 2</weights>
+        </work>
+    </works>
+
+    <!-- Twitter Procedures declaration -->
+    <transactiontypes>
+        <transactiontype>
+            <name>DeleteCallForwarding</name>
+        </transactiontype>
+        <transactiontype>
+            <name>GetAccessData</name>
+        </transactiontype>
+        <transactiontype>
+            <name>GetNewDestination</name>
+        </transactiontype>
+        <transactiontype>
+            <name>GetSubscriberData</name>
+        </transactiontype>
+        <transactiontype>
+            <name>InsertCallForwarding</name>
+        </transactiontype>
+        <transactiontype>
+            <name>UpdateLocation</name>
+        </transactiontype>
+        <transactiontype>
+            <name>UpdateSubscriberData</name>
+        </transactiontype>
+    </transactiontypes>
+</parameters>

@@ -1,0 +1,14 @@
+[INFO ] 2021-09-23 09:48:11,576 [main]  com.oltpbenchmark.DBWorkload main - ======================================================================
+
+Benchmark:     TATP {com.oltpbenchmark.benchmarks.tatp.TATPBenchmark}
+Configuration: /home/wanshenl/config/benchbase/postgres/sample_tatp_config.xml
+Type:          POSTGRES
+Driver:        org.postgresql.Driver
+URL:           jdbc:postgresql://localhost:15721/noisepage?preferQueryMode=extended&sslmode=disable
+Isolation:     TRANSACTION_READ_COMMITTED
+Scale Factor:  10.0
+
+[INFO ] 2021-09-23 09:48:11,578 [main]  com.oltpbenchmark.DBWorkload main - ======================================================================
+[INFO ] 2021-09-23 09:48:11,934 [main]  com.oltpbenchmark.DBWorkload main - Loading data into TATP database...
+[INFO ] 2021-09-23 09:50:43,669 [main]  com.oltpbenchmark.DBWorkload main - Finished loading data into TATP database...
+[INFO ] 2021-09-23 09:50:43,672 [main]  com.oltpbenchmark.DBWorkload main - Skipping benchmark workload execution
