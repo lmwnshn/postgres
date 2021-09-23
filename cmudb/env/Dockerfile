@@ -49,7 +49,7 @@ COPY --chown=terrier:terrier . /home/terrier/repo
 RUN cd /home/terrier/repo \
     && bash ./cmudb/build/configure.sh release \
     && make world-bin -j -s \
-    && make install -j -s
+    && make install-world-bin -j -s
 
 # Document that the following ports need to be exposed.
 # Note that the ports are not actually exposed unless the relevant
