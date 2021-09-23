@@ -83,9 +83,6 @@ def _augment_stats(df, benchmark):
   df['benchmark'] = str(benchmark)
   df['elapsed_time'] = pd.Series(range(len(df)))
 
-  print(df['memory_stats.usage'])
-  print(df['memory_stats.stats.cache'])
-
   return df
 
 
