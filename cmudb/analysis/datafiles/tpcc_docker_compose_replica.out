@@ -1,0 +1,25 @@
+Creating replica ... 
+[1A[2KCreating replica ... [32mdone[0m[1BAttaching to replica
+[36mreplica       |[0m dev10.db.pdl.local.cmu.edu:15721 - accepting connections
+[36mreplica       |[0m Password: 
+[36mreplica       |[0m waiting for checkpoint
+[36mreplica       |[0m       0/6216265 kB (0%), 0/1 tablespace
+[36mreplica       |[0m  931599/6216265 kB (14%), 0/1 tablespace
+[36mreplica       |[0m 2080667/6216265 kB (33%), 0/1 tablespace
+[36mreplica       |[0m 3229736/6216265 kB (51%), 0/1 tablespace
+[36mreplica       |[0m 4378798/6216265 kB (70%), 0/1 tablespace
+[36mreplica       |[0m 5527846/6216265 kB (88%), 0/1 tablespace
+[36mreplica       |[0m 6216274/6216274 kB (100%), 0/1 tablespace
+[36mreplica       |[0m 6216274/6216274 kB (100%), 1/1 tablespace
+[36mreplica       |[0m 2021-09-23 13:59:55.634 UTC [13] LOG:  starting PostgreSQL 13.4 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+[36mreplica       |[0m 2021-09-23 13:59:55.634 UTC [13] LOG:  listening on IPv4 address "0.0.0.0", port 15721
+[36mreplica       |[0m 2021-09-23 13:59:55.634 UTC [13] LOG:  listening on IPv6 address "::", port 15721
+[36mreplica       |[0m 2021-09-23 13:59:55.635 UTC [13] LOG:  listening on Unix socket "/tmp/.s.PGSQL.15721"
+[36mreplica       |[0m 2021-09-23 13:59:55.637 UTC [14] LOG:  database system was interrupted; last known up at 2021-09-23 13:59:17 UTC
+[36mreplica       |[0m 2021-09-23 13:59:55.688 UTC [14] LOG:  entering standby mode
+[36mreplica       |[0m 2021-09-23 13:59:55.690 UTC [14] LOG:  redo starts at F/BB000028
+[36mreplica       |[0m 2021-09-23 13:59:55.690 UTC [14] LOG:  consistent recovery state reached at F/BB000100
+[36mreplica       |[0m 2021-09-23 13:59:55.690 UTC [13] LOG:  database system is ready to accept read only connections
+[36mreplica       |[0m 2021-09-23 13:59:55.696 UTC [18] LOG:  started streaming WAL from primary at F/BC000000 on timeline 1
+Stopping replica ... 
+[1A[2KStopping replica ... [32mdone[0m[1BGracefully stopping... (press Ctrl+C again to force)

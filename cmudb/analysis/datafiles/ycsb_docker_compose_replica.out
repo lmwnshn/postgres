@@ -1,0 +1,26 @@
+Recreating replica ... 
+[1A[2KRecreating replica ... [32mdone[0m[1BAttaching to replica
+[36mreplica       |[0m dev10.db.pdl.local.cmu.edu:15721 - accepting connections
+[36mreplica       |[0m Password: 
+[36mreplica       |[0m waiting for checkpoint
+[36mreplica       |[0m       0/6774688 kB (0%), 0/1 tablespace
+[36mreplica       |[0m  388477/6774688 kB (5%), 0/1 tablespace
+[36mreplica       |[0m 1537532/6774688 kB (22%), 0/1 tablespace
+[36mreplica       |[0m 2686647/6774688 kB (39%), 0/1 tablespace
+[36mreplica       |[0m 3835737/6774688 kB (56%), 0/1 tablespace
+[36mreplica       |[0m 4984778/6774688 kB (73%), 0/1 tablespace
+[36mreplica       |[0m 6133834/6774688 kB (90%), 0/1 tablespace
+[36mreplica       |[0m 6774698/6774698 kB (100%), 0/1 tablespace
+[36mreplica       |[0m 6774698/6774698 kB (100%), 1/1 tablespace
+[36mreplica       |[0m 2021-09-23 14:13:07.305 UTC [13] LOG:  starting PostgreSQL 13.4 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+[36mreplica       |[0m 2021-09-23 14:13:07.306 UTC [13] LOG:  listening on IPv4 address "0.0.0.0", port 15721
+[36mreplica       |[0m 2021-09-23 14:13:07.306 UTC [13] LOG:  listening on IPv6 address "::", port 15721
+[36mreplica       |[0m 2021-09-23 14:13:07.307 UTC [13] LOG:  listening on Unix socket "/tmp/.s.PGSQL.15721"
+[36mreplica       |[0m 2021-09-23 14:13:07.308 UTC [14] LOG:  database system was interrupted; last known up at 2021-09-23 14:12:21 UTC
+[36mreplica       |[0m 2021-09-23 14:13:07.361 UTC [14] LOG:  entering standby mode
+[36mreplica       |[0m 2021-09-23 14:13:07.362 UTC [14] LOG:  redo starts at 12/7D000060
+[36mreplica       |[0m 2021-09-23 14:13:07.363 UTC [14] LOG:  consistent recovery state reached at 12/7D000138
+[36mreplica       |[0m 2021-09-23 14:13:07.363 UTC [13] LOG:  database system is ready to accept read only connections
+[36mreplica       |[0m 2021-09-23 14:13:07.370 UTC [18] LOG:  started streaming WAL from primary at 12/7E000000 on timeline 1
+Stopping replica   ... 
+[1A[2KStopping replica   ... [32mdone[0m[1BGracefully stopping... (press Ctrl+C again to force)
