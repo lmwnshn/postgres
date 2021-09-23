@@ -48,7 +48,7 @@ COPY --chown=terrier:terrier . /home/terrier/repo
 # Configure and build NoisePage.
 RUN cd /home/terrier/repo \
     && bash ./cmudb/build/configure.sh release \
-    && make -j -s \
+    && make world-bin -j -s \
     && make install -j -s
 
 # Document that the following ports need to be exposed.
