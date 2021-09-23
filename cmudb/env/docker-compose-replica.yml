@@ -1,0 +1,22 @@
+version: '3'
+services:
+  np-replica:
+    image: pgnp:latest
+    container_name: replica
+    network_mode: "host"
+    environment:
+      - NP_PRIMARY_NAME=dev10.db.pdl.local.cmu.edu
+      - NP_PRIMARY_PORT=15721
+      - NP_PRIMARY_USERNAME=noisepage
+      - NP_REPLICATION_PASSWORD=passyMcPassword
+      - NP_REPLICATION_PHYSICAL_SLOT=slot1
+      - NP_REPLICATION_TYPE=replica
+      - NP_REPLICATION_USER=replicator
+      - PGPORT=15721
+      - POSTGRES_DB=noisepage
+      - POSTGRES_PASSWORD=terrier
+      - POSTGRES_USER=noisepage
+    volumes:
+      - pgdata-replica:/pgdata
+volumes:
+  pgdata-replica:

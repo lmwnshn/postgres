@@ -1,0 +1,19 @@
+version: '3'
+services:
+  np-primary:
+    image: pgnp:latest
+    container_name: primary
+    network_mode: "host"
+    environment:
+      - NP_REPLICATION_PASSWORD=passyMcPassword
+      - NP_REPLICATION_PHYSICAL_SLOTS=slot1
+      - NP_REPLICATION_TYPE=primary
+      - NP_REPLICATION_USER=replicator
+      - PGPORT=15721
+      - POSTGRES_DB=noisepage
+      - POSTGRES_PASSWORD=terrier
+      - POSTGRES_USER=noisepage
+    volumes:
+      - pgdata-primary:/pgdata
+volumes:
+  pgdata-primary:
