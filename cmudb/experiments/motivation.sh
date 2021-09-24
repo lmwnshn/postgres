@@ -162,7 +162,7 @@ function _force_kill_docker_metrics() {
   HOST=$2         # ssh host.
 
   ssh ${USER}@${HOST} "
-    sudo kill -9 \$(ps aux | grep ${USER} | grep docker | grep nc | awk '{print \$2}')
+    sudo kill -9 \$(ps aux | grep ${USER} | grep --invert-match aux | grep docker | grep nc | awk '{print \$2}')
   "
 }
 
@@ -270,6 +270,10 @@ function _main() {
     sleep 30
     _replica_up "${BENCHMARK}_docker_compose"
     sleep 30
+
+
+    _run_primary "SET log_min_messages = 'PANIC';"
+    _run_primary "SET log_min_error_statement = 'PANIC';"
 
     # Create the warm_all() function which invokes pg_prewarm on all tables and indexes.
     # This cannot be created on the replica because the replica is in read-only mode.
