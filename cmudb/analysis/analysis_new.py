@@ -90,7 +90,18 @@ def parse_docker_stats(fpath, cpu):
   df_vals = []
   with open(fpath, 'r', encoding='utf8') as f:
     for line in f:
-      df_vals.append(pd.Series(_json_flatten(json.loads(line))))
+      # The last line might be abruptly cut off.
+      # It's fine to leave the last line out because we
+      # just have a long-running monitoring process that
+      # we kill loosely some time after we execute BenchBase.
+      try:
+        df_vals.append(pd.Series(_json_flatten(json.loads(line))))
+      except json.decoder.JSONDecodeError:
+        try:
+          next(f)
+          assert False
+        except StopIteration:
+          pass
   return _augment_stats(pd.DataFrame(df_vals), cpu)
 
 

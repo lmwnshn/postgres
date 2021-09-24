@@ -178,7 +178,7 @@ _pg_setup_replication() {
   # CPUs num: 80
   # Data Storage: SSD
 
-  echo "max_connections = 300" >> ${AUTO_CONF}
+  echo "max_connections = 1050" >> ${AUTO_CONF}
   echo "shared_buffers = 47GB" >> ${AUTO_CONF}
   echo "effective_cache_size = 141GB" >> ${AUTO_CONF}
   echo "maintenance_work_mem = 2GB" >> ${AUTO_CONF}
