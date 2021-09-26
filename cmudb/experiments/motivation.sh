@@ -271,17 +271,21 @@ function _main() {
     _primary_up "${BENCHMARK}_docker_compose"
     _replica_up "${BENCHMARK}_docker_compose"
 
+    set +e
     PRIMARY_READY=1
     while [ "${PRIMARY_READY}" != "0" ]
     do
       PRIMARY_READY=$(pg_isready -h ${HOST_PRIMARY} -p ${PGPORT_PRIMARY} -d ${PGDB_PRIMARY})
     done
+    set -e
 
+    set +e
     REPLICA_READY=1
     while [ "${REPLICA_READY}" != "0" ]
     do
       REPLICA_READY=$(pg_isready -h ${HOST_REPLICA} -p ${PGPORT_REPLICA} -d ${PGDB_REPLICA})
     done
+    set -e
 
 
     # Create the warm_all() function which invokes pg_prewarm on all tables and indexes.
