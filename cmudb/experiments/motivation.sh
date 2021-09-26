@@ -272,9 +272,6 @@ function _main() {
     sleep 30
 
 
-    _run_primary "SET log_min_messages = 'PANIC';"
-    _run_primary "SET log_min_error_statement = 'PANIC';"
-
     # Create the warm_all() function which invokes pg_prewarm on all tables and indexes.
     # This cannot be created on the replica because the replica is in read-only mode.
     _create_fn_warm_all "${USER_PRIMARY}" "${HOST_PRIMARY}" "${PGUSER_PRIMARY}" "${PGPASS_PRIMARY}" "${PGPORT_PRIMARY}"
@@ -306,7 +303,7 @@ function _main() {
     _kill_pid "${USER_PRIMARY}" "${HOST_PRIMARY}" "${PGDIR_PRIMARY}" "${BENCHMARK}_replication_lag"
     # Stop collecting Docker metrics.
     _force_kill_docker_metrics "${USER_PRIMARY}" "${HOST_PRIMARY}"
-    _force_kill_docker_metrics"${USER_REPLICA}" "${HOST_REPLICA}"
+    _force_kill_docker_metrics "${USER_REPLICA}" "${HOST_REPLICA}"
     _kill_pid "${USER_PRIMARY}" "${HOST_PRIMARY}" "${PGDIR_PRIMARY}" "${BENCHMARK}_docker_monitoring"
     _kill_pid "${USER_REPLICA}" "${HOST_REPLICA}" "${PGDIR_REPLICA}" "${BENCHMARK}_docker_monitoring"
     set -e
