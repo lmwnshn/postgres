@@ -197,6 +197,10 @@ _pg_setup_replication() {
   echo "max_parallel_workers = 80" >> ${AUTO_CONF}
   echo "max_parallel_maintenance_workers = 4" >> ${AUTO_CONF}
 
+  # Some output is way too noisy...
+  echo "log_min_messages = 'PANIC'" >> ${AUTO_CONF}
+  echo "log_min_error_statement = 'PANIC'" >> ${AUTO_CONF}
+
   if [ "${NP_REPLICATION_TYPE}" = "primary" ]; then
     # ===============================
     # Enable replication.
