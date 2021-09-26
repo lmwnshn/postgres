@@ -176,7 +176,9 @@ _pg_setup_replication() {
   # DB Type: oltp
   # Total Memory (RAM): 188 GB
   # CPUs num: 80
-  # Data Storage: SSD
+  # Data Storage: ssd
+
+  # Manual override of max_connections to 1050
 
   echo "max_connections = 1050" >> ${AUTO_CONF}
   echo "shared_buffers = 47GB" >> ${AUTO_CONF}
