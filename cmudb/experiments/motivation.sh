@@ -4,6 +4,7 @@ set -e
 
 HOST_PRIMARY="dev10.db.pdl.local.cmu.edu"
 USER_PRIMARY="wanshenl"
+PGDB_PRIMARY="noisepage"
 PGUSER_PRIMARY="noisepage"
 PGPASS_PRIMARY="terrier"
 PGPORT_PRIMARY="15721"
@@ -11,6 +12,7 @@ PGDIR_PRIMARY="/home/wanshenl/postgres"
 
 HOST_REPLICA="dev6.db.pdl.local.cmu.edu"
 USER_REPLICA="wanshenl"
+PGDB_REPLICA="noisepage"
 PGUSER_REPLICA="noisepage"
 PGPASS_REPLICA="terrier"
 PGPORT_REPLICA="15721"
@@ -267,9 +269,19 @@ function _main() {
 
     # Bring up the primary and replica.
     _primary_up "${BENCHMARK}_docker_compose"
-    sleep 30
     _replica_up "${BENCHMARK}_docker_compose"
-    sleep 30
+
+    PRIMARY_READY=1
+    while [ "${PRIMARY_READY}" != "0" ]
+    do
+      PRIMARY_READY=$(pg_isready -h ${HOST_PRIMARY} -p ${PGPORT_PRIMARY} -d ${PGDB_PRIMARY})
+    done
+
+    REPLICA_READY=1
+    while [ "${REPLICA_READY}" != "0" ]
+    do
+      REPLICA_READY=$(pg_isready -h ${HOST_REPLICA} -p ${PGPORT_REPLICA} -d ${PGDB_REPLICA})
+    done
 
 
     # Create the warm_all() function which invokes pg_prewarm on all tables and indexes.
