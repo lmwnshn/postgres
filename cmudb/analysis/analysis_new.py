@@ -112,6 +112,40 @@ def parse_replay_lag(fpath, b):
   return df
 
 
+def get_benchmark(df, benchmark):
+  return df[df['benchmark'] == str(benchmark)]
+
+
+def plot_metrics(benchmarks, plotters, primary_stats, replica_stats):
+  for filename, attribute, ylabel in plotters:
+    fig, ax1 = plt.subplots(figsize=(16,6))
+    ax2 = ax1.twinx()
+    # ax1.ticklabel_format(style='plain', useOffset=False)
+    # ax2.ticklabel_format(style='plain', useOffset=False)
+
+    for benchmark in benchmarks:
+      get_benchmark(primary_stats, benchmark).plot(x='elapsed_time', y=attribute, ax=ax1, xlabel='Elapsed Time ($s$)', ylabel=f'{ylabel}', label=f'Primary {benchmark}', color='tab:orange')
+      get_benchmark(replica_stats, benchmark).plot(x='elapsed_time', y=attribute, ax=ax2, xlabel='Elapsed Time ($s$)', ylabel=f'{ylabel}', label=f'Replica {benchmark}', color='tab:cyan')
+    lines1, labels1 = ax1.get_legend_handles_labels()
+    lines2, labels2 = ax2.get_legend_handles_labels()
+    lines, labels = lines1 + lines2, labels1 + labels2
+    ax1.legend(lines, labels, loc=0)
+    ax2.get_legend().remove()
+
+    fig.tight_layout()
+    plt.title(f'{ylabel}')
+    plt.savefig(filename, bbox_inches='tight')
+
+
+def plot_replay_lag(benchmarks, replay_lag, replay_lag_col, replay_lag_label):
+  fig, ax = plt.subplots(1, 1, figsize=(16,6))
+  ax.ticklabel_format(style='plain', useOffset=False)
+  for benchmark in benchmarks:
+    get_benchmark(replay_lag, benchmark)[replay_lag_col].plot(xlabel='Elapsed Time (s)', ylabel=replay_lag_label, label=f'{benchmark}', color='tab:orange')
+  plt.legend()
+  plt.title(replay_lag_label)
+  plt.savefig('replay_lag.png', bbox_inches='tight')
+
 def main():
   parser = argparse.ArgumentParser(description='Process the stats that were output by Docker.')
   parser.add_argument('data_files', help='Path to the data files to analyze.')
@@ -124,6 +158,7 @@ def main():
     sys.exit(0)
 
   benchmarks = ['smallbank', 'tatp', 'tpcc', 'ycsb']
+  benchmarks = ['smallbank']
   primary_stats_files = [(f'{args.data_files}/{benchmark}_docker_monitoring_primary.txt', benchmark) for benchmark in benchmarks]
   replica_stats_files = [(f'{args.data_files}/{benchmark}_docker_monitoring_replica.txt', benchmark) for benchmark in benchmarks]
   replay_lag_files = [(f'{args.data_files}/{benchmark}_replication_lag.txt', benchmark) for benchmark in benchmarks]
@@ -132,41 +167,31 @@ def main():
   replica_stats = pd.concat([parse_docker_stats(f, b) for f, b in replica_stats_files], ignore_index=True)
   replay_lag = pd.concat([parse_replay_lag(f, b) for f, b in replay_lag_files], ignore_index=True)
 
-  def get_benchmark(df, benchmark):
-    return df[df['benchmark'] == str(benchmark)]
+  print(primary_stats.columns.values)
+  sys.exit(0)
 
   plotters = [
-    ('IO_DiffBytes_Total', 'IO Total Bytes Per Sec'),
-    ('cpu_usage_%', 'CPU Usage % Per Sec'),
-    ('memory_usage_%', 'Memory Usage % Per Sec'),
+    ('io_read.png', 'IO_DiffBytes_Read', r'Read I/O (bytes)'),
+    ('io_write.png', 'IO_DiffBytes_Write', r'Write I/O (bytes)'),
+    ('io_read_util.png', 'IO_Read_Util', r'Read I/O Util %'),
+    ('io_write_util.png', 'IO_Write_Util', r'Write I/O Util %'),
+    ('io_total.png', 'IO_DiffBytes_Total', r'Total I/O (bytes)'),
+    ('cpu.png', 'cpu_usage_%', r'CPU Usage %'),
+    ('memory.png', 'memory_usage_%', r'Memory Usage %'),
   ]
 
-  for attribute, ylabel in plotters:
-    fig, ax1 = plt.subplots(figsize=(16,6))
-    ax2 = ax1.twinx()
+  def transform():
+    replay_lag['Replay Lag (seconds)'] = replay_lag['Replay Lag (microseconds)'] / 1e6
+    for stats in [primary_stats, replica_stats]:
+      # SAMSUNG MZQLB960HAJR-00007
+      # Max Seq Read 3000 MB/s, Seq Write 1050 MB/s
+      stats['IO_Read_Util'] = stats['IO_DiffBytes_Read'] / 3000e6 * 100
+      stats['IO_Write_Util'] = stats['IO_DiffBytes_Write'] / 1050e6 * 100
 
-    colors = plt.cm.tab20(np.linspace(0, 1, len(benchmarks)*2))
-    color_i = 0
+  transform()
 
-    for benchmark in benchmarks:
-      get_benchmark(primary_stats, benchmark).plot(x='elapsed_time', y=attribute, ax=ax1, ylabel=f'{ylabel} (Primary)', label=f'Primary {benchmark}', color=colors[color_i])
-      get_benchmark(replica_stats, benchmark).plot(x='elapsed_time', y=attribute, ax=ax2, ylabel=f'{ylabel} (Replica)', label=f'Replica {benchmark}', color=colors[color_i+1])
-      color_i += 2
-    lines1, labels1 = ax1.get_legend_handles_labels()
-    lines2, labels2 = ax2.get_legend_handles_labels()
-    lines, labels = lines1 + lines2, labels1 + labels2
-    ax2.legend(lines, labels, loc=0)
-
-    fig.tight_layout()
-    plt.title(f'{ylabel} (Primary, Replica) for various benchmarks')
-
-  fig, ax = plt.subplots(1, 1, figsize=(16,6))
-  for benchmark in benchmarks:
-    get_benchmark(replay_lag, benchmark)['Replay Lag (microseconds)'].plot(ylabel=f'Replay Lag (microseconds)', label=f'{benchmark}')
-  plt.legend()
-  plt.title('Replay Lag (microseconds)')
-
-  plt.show()
+  plot_metrics(benchmarks, plotters, primary_stats, replica_stats)
+  plot_replay_lag(benchmarks, replay_lag, 'Replay Lag (seconds)', 'Replay Lag ($s$)')
 
 
 if __name__ == '__main__':

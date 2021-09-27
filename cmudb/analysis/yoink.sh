@@ -1,6 +1,7 @@
 #!/bin/bash
 
 BENCHMARKS=("smallbank" "tatp" "tpcc" "ycsb")
+BENCHMARKS=("smallbank")
 
 for BENCHMARK in "${BENCHMARKS[@]}"
 do
