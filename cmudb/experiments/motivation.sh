@@ -41,8 +41,8 @@ function _murder_docker() {
   HOST=$2
 
   ssh ${USER}@${HOST} "
-    docker container prune
-    docker volume prune
+    echo y | docker container prune
+    echo y | docker volume prune
   "
 }
 
