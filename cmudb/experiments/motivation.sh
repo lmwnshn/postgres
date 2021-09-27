@@ -36,6 +36,16 @@ function _kill_docker() {
   "
 }
 
+function _murder_docker() {
+  USER=$1
+  HOST=$2
+
+  ssh ${USER}@${HOST} "
+    docker container prune
+    docker volume prune
+  "
+}
+
 # Bring up the primary.
 function _primary_up() {
   FILENAME=$1
@@ -264,6 +274,8 @@ function _main() {
     set +e
     _kill_docker "${USER_PRIMARY}" ${HOST_PRIMARY}
     _kill_docker "${USER_REPLICA}" ${HOST_REPLICA}
+    _murder_docker "${USER_PRIMARY}" ${HOST_PRIMARY}
+    _murder_docker "${USER_REPLICA}" ${HOST_REPLICA}
     set -e
     sleep 30
 
