@@ -1,0 +1,157 @@
+[INFO ] 2021-09-29 19:03:28,269 [main]  com.oltpbenchmark.DBWorkload main - ======================================================================
+
+Benchmark:     SMALLBANK {com.oltpbenchmark.benchmarks.smallbank.SmallBankBenchmark}
+Configuration: /home/wanshenl/config/benchbase/postgres/sample_smallbank_config.xml
+Type:          POSTGRES
+Driver:        org.postgresql.Driver
+URL:           jdbc:postgresql://localhost:15721/noisepage?preferQueryMode=extended&sslmode=disable
+Isolation:     TRANSACTION_READ_COMMITTED
+Scale Factor:  5.0
+
+[INFO ] 2021-09-29 19:03:28,270 [main]  com.oltpbenchmark.DBWorkload main - ======================================================================
+[INFO ] 2021-09-29 19:03:28,426 [main]  com.oltpbenchmark.DBWorkload runWorkload - Creating 100 virtual terminals...
+[INFO ] 2021-09-29 19:03:29,212 [main]  com.oltpbenchmark.DBWorkload runWorkload - Launching the SMALLBANK Benchmark with 1 Phase...
+[INFO ] 2021-09-29 19:03:29,310 [main]  com.oltpbenchmark.ThreadBench runRateLimitedMultiPhase - [0;1mPHASE START[0;0m :: [Workload=SMALLBANK] [Serial=false] [Time=60] [WarmupTime=0] [Rate=unlimited] [Arrival=REGULAR] [Ratios=[15.0, 15.0, 15.0, 25.0, 15.0, 15.0]] [ActiveWorkers=100]
+[INFO ] 2021-09-29 19:03:30,300 [main]  com.oltpbenchmark.ThreadBench runRateLimitedMultiPhase - [0;1mMEASURE[0;0m :: Warmup complete, starting measurements.
+[INFO ] 2021-09-29 19:04:30,301 [main]  com.oltpbenchmark.ThreadBench runRateLimitedMultiPhase - [0;1mTERMINATE[0;0m :: Waiting for all terminals to finish ..
+[INFO ] 2021-09-29 19:04:30,383 [Thread-100]  com.oltpbenchmark.ThreadBench run - Starting WatchDogThread
+[INFO ] 2021-09-29 19:04:32,985 [main]  com.oltpbenchmark.DBWorkload runWorkload - ======================================================================
+[INFO ] 2021-09-29 19:04:33,128 [main]  com.oltpbenchmark.DBWorkload runWorkload - Rate limited reqs/s: Results(nanoSeconds=60000404606, measuredRequests=6552060) = 109200.26361530233 requests/sec
+[INFO ] 2021-09-29 19:04:33,178 [main]  com.oltpbenchmark.DBWorkload writeOutputs - Output Raw data into file: smallbank_2021-09-29_19-04-33.raw.csv
+[INFO ] 2021-09-29 19:04:50,486 [Thread-100]  com.oltpbenchmark.ThreadBench run - Worker Thread Status:
+SmallBankWorker<000>: false
+SmallBankWorker<001>: false
+SmallBankWorker<002>: false
+SmallBankWorker<003>: false
+SmallBankWorker<004>: false
+SmallBankWorker<005>: false
+SmallBankWorker<006>: false
+SmallBankWorker<007>: false
+SmallBankWorker<008>: false
+SmallBankWorker<009>: false
+SmallBankWorker<010>: false
+SmallBankWorker<011>: false
+SmallBankWorker<012>: false
+SmallBankWorker<013>: false
+SmallBankWorker<014>: false
+SmallBankWorker<015>: false
+SmallBankWorker<016>: false
+SmallBankWorker<017>: false
+SmallBankWorker<018>: false
+SmallBankWorker<019>: false
+SmallBankWorker<020>: false
+SmallBankWorker<021>: false
+SmallBankWorker<022>: false
+SmallBankWorker<023>: false
+SmallBankWorker<024>: false
+SmallBankWorker<025>: false
+SmallBankWorker<026>: false
+SmallBankWorker<027>: false
+SmallBankWorker<028>: false
+SmallBankWorker<029>: false
+SmallBankWorker<030>: false
+SmallBankWorker<031>: false
+SmallBankWorker<032>: false
+SmallBankWorker<033>: false
+SmallBankWorker<034>: false
+SmallBankWorker<035>: false
+SmallBankWorker<036>: false
+SmallBankWorker<037>: false
+SmallBankWorker<038>: false
+SmallBankWorker<039>: false
+SmallBankWorker<040>: false
+SmallBankWorker<041>: false
+SmallBankWorker<042>: false
+SmallBankWorker<043>: false
+SmallBankWorker<044>: false
+SmallBankWorker<045>: false
+SmallBankWorker<046>: false
+SmallBankWorker<047>: false
+SmallBankWorker<048>: false
+SmallBankWorker<049>: false
+SmallBankWorker<050>: false
+SmallBankWorker<051>: false
+SmallBankWorker<052>: false
+SmallBankWorker<053>: false
+SmallBankWorker<054>: false
+SmallBankWorker<055>: false
+SmallBankWorker<056>: false
+SmallBankWorker<057>: false
+SmallBankWorker<058>: false
+SmallBankWorker<059>: false
+SmallBankWorker<060>: false
+SmallBankWorker<061>: false
+SmallBankWorker<062>: false
+SmallBankWorker<063>: false
+SmallBankWorker<064>: false
+SmallBankWorker<065>: false
+SmallBankWorker<066>: false
+SmallBankWorker<067>: false
+SmallBankWorker<068>: false
+SmallBankWorker<069>: false
+SmallBankWorker<070>: false
+SmallBankWorker<071>: false
+SmallBankWorker<072>: false
+SmallBankWorker<073>: false
+SmallBankWorker<074>: false
+SmallBankWorker<075>: false
+SmallBankWorker<076>: false
+SmallBankWorker<077>: false
+SmallBankWorker<078>: false
+SmallBankWorker<079>: false
+SmallBankWorker<080>: false
+SmallBankWorker<081>: false
+SmallBankWorker<082>: false
+SmallBankWorker<083>: false
+SmallBankWorker<084>: false
+SmallBankWorker<085>: false
+SmallBankWorker<086>: false
+SmallBankWorker<087>: false
+SmallBankWorker<088>: false
+SmallBankWorker<089>: false
+SmallBankWorker<090>: false
+SmallBankWorker<091>: false
+SmallBankWorker<092>: false
+SmallBankWorker<093>: false
+SmallBankWorker<094>: false
+SmallBankWorker<095>: false
+SmallBankWorker<096>: false
+SmallBankWorker<097>: false
+SmallBankWorker<098>: false
+SmallBankWorker<099>: false
+
+[INFO ] 2021-09-29 19:04:54,842 [main]  com.oltpbenchmark.DBWorkload writeOutputs - Output samples into file: smallbank_2021-09-29_19-04-33.samples.csv
+[INFO ] 2021-09-29 19:04:55,588 [main]  com.oltpbenchmark.DBWorkload writeOutputs - Output summary data into file: smallbank_2021-09-29_19-04-33.summary.json
+[INFO ] 2021-09-29 19:04:55,595 [main]  com.oltpbenchmark.DBWorkload writeOutputs - Output DBMS parameters into file: smallbank_2021-09-29_19-04-33.params.json
+[INFO ] 2021-09-29 19:04:55,601 [main]  com.oltpbenchmark.DBWorkload writeOutputs - Output DBMS metrics into file: smallbank_2021-09-29_19-04-33.metrics.json
+[INFO ] 2021-09-29 19:04:55,605 [main]  com.oltpbenchmark.DBWorkload writeOutputs - Output benchmark config into file: smallbank_2021-09-29_19-04-33.config.xml
+[INFO ] 2021-09-29 19:04:55,641 [main]  com.oltpbenchmark.DBWorkload writeOutputs - Output results into file: smallbank_2021-09-29_19-04-33.results.csv with window size 5
+[INFO ] 2021-09-29 19:04:58,424 [main]  com.oltpbenchmark.DBWorkload writeHistograms - ======================================================================
+[INFO ] 2021-09-29 19:04:58,424 [main]  com.oltpbenchmark.DBWorkload writeHistograms - Workload Histograms:
+
+[0;1mCompleted Transactions:[0;0m
+com.oltpbenchmark.benchmarks.smallbank.procedures.Amalgamate/01                  [ 990005] ****************************************************
+com.oltpbenchmark.benchmarks.smallbank.procedures.Balance/02                     [ 991983] ****************************************************
+com.oltpbenchmark.benchmarks.smallbank.procedures.DepositChecking/03             [ 993165] ****************************************************
+com.oltpbenchmark.benchmarks.smallbank.procedures.SendPayment/04                 [1499218] ********************************************************************************
+com.oltpbenchmark.benchmarks.smallbank.procedures.TransactSavings/05             [ 909322] ************************************************
+com.oltpbenchmark.benchmarks.smallbank.procedures.WriteCheck/06                  [ 992617] ****************************************************
+
+[0;1mAborted Transactions:[0;0m
+com.oltpbenchmark.benchmarks.smallbank.procedures.SendPayment/04                 [153383] ********************************************************************************
+com.oltpbenchmark.benchmarks.smallbank.procedures.TransactSavings/05             [ 82830] *******************************************
+
+[0;1mRejected Transactions (Server Retry):[0;0m
+<EMPTY>
+
+[0;1mRejected Transactions (Retry Different):[0;0m
+<EMPTY>
+
+[0;1mUnexpected SQL Errors:[0;0m
+<EMPTY>
+
+[0;1mUnknown Status Transactions:[0;0m
+<EMPTY>
+
+
+[INFO ] 2021-09-29 19:04:58,424 [main]  com.oltpbenchmark.DBWorkload writeHistograms - ======================================================================

@@ -1,0 +1,11 @@
+Creating volume "env_pgdata-replica" with default driver
+Creating replica ... 
+[1A[2KCreating replica ... [32mdone[0m[1BAttaching to replica
+[36mreplica       |[0m dev10.db.pdl.local.cmu.edu:15721 - accepting connections
+[36mreplica       |[0m Password: 
+[36mreplica       |[0m waiting for checkpoint
+[36mreplica       |[0m     0/30944 kB (0%), 0/1 tablespace
+[36mreplica       |[0m 30954/30954 kB (100%), 0/1 tablespace
+[36mreplica       |[0m 30954/30954 kB (100%), 1/1 tablespace
+Stopping replica ... 
+[1A[2KStopping replica ... [32mdone[0m[1BGracefully stopping... (press Ctrl+C again to force)
