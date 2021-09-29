@@ -1,0 +1,14 @@
+[INFO ] 2021-09-29 19:09:39,311 [main]  com.oltpbenchmark.DBWorkload main - ======================================================================
+
+Benchmark:     SMALLBANK {com.oltpbenchmark.benchmarks.smallbank.SmallBankBenchmark}
+Configuration: /home/wanshenl/config/benchbase/postgres/sample_smallbank_config.xml
+Type:          POSTGRES
+Driver:        org.postgresql.Driver
+URL:           jdbc:postgresql://localhost:15721/noisepage?preferQueryMode=extended&sslmode=disable
+Isolation:     TRANSACTION_READ_COMMITTED
+Scale Factor:  10.0
+
+[INFO ] 2021-09-29 19:09:39,313 [main]  com.oltpbenchmark.DBWorkload main - ======================================================================
+[INFO ] 2021-09-29 19:09:39,353 [main]  com.oltpbenchmark.DBWorkload main - Creating new SMALLBANK database...
+[INFO ] 2021-09-29 19:09:39,454 [main]  com.oltpbenchmark.DBWorkload main - Finished creating new SMALLBANK database...
+[INFO ] 2021-09-29 19:09:39,529 [main]  com.oltpbenchmark.DBWorkload main - Skipping benchmark workload execution
