@@ -167,9 +167,6 @@ def main():
   replica_stats = pd.concat([parse_docker_stats(f, b) for f, b in replica_stats_files], ignore_index=True)
   replay_lag = pd.concat([parse_replay_lag(f, b) for f, b in replay_lag_files], ignore_index=True)
 
-  print(primary_stats.columns.values)
-  sys.exit(0)
-
   plotters = [
     ('io_read.png', 'IO_DiffBytes_Read', r'Read I/O (bytes)'),
     ('io_write.png', 'IO_DiffBytes_Write', r'Write I/O (bytes)'),

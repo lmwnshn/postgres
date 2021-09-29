@@ -1,0 +1,14 @@
+[INFO ] 2021-09-29 18:30:50,963 [main]  com.oltpbenchmark.DBWorkload main - ======================================================================
+
+Benchmark:     SMALLBANK {com.oltpbenchmark.benchmarks.smallbank.SmallBankBenchmark}
+Configuration: /home/wanshenl/config/benchbase/postgres/sample_smallbank_config.xml
+Type:          POSTGRES
+Driver:        org.postgresql.Driver
+URL:           jdbc:postgresql://localhost:15721/noisepage?preferQueryMode=extended&sslmode=disable
+Isolation:     TRANSACTION_READ_COMMITTED
+Scale Factor:  1.0
+
+[INFO ] 2021-09-29 18:30:50,965 [main]  com.oltpbenchmark.DBWorkload main - ======================================================================
+[INFO ] 2021-09-29 18:30:51,130 [main]  com.oltpbenchmark.DBWorkload main - Loading data into SMALLBANK database...
+[INFO ] 2021-09-29 18:30:59,661 [main]  com.oltpbenchmark.DBWorkload main - Finished loading data into SMALLBANK database...
+[INFO ] 2021-09-29 18:30:59,661 [main]  com.oltpbenchmark.DBWorkload main - Skipping benchmark workload execution
