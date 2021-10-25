@@ -99,7 +99,7 @@ ExecSubqueryScan(PlanState *pstate)
   result = _ExecSubqueryScan(pstate);
 
   TS_MARKER(nodeSubqueryscan_ExecSubqueryScan_end);
-  TS_MARKER(nodeSubqueryscan_ExecSubqueryScan_features);
+  TS_FEATURES_MARKER(nodeSubqueryscan_ExecSubqueryScan_features, pstate);
 
   return result;
 }

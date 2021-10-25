@@ -584,7 +584,7 @@ ExecHashJoinImpl(PlanState *pstate, bool parallel) {
   result = _ExecHashJoinImpl(pstate, parallel);
 
   TS_MARKER(nodeHashjoin_ExecHashJoinImpl_end);
-  TS_MARKER(nodeHashjoin_ExecHashJoinImpl_features);
+  TS_FEATURES_MARKER(nodeHashjoin_ExecHashJoinImpl_features, pstate);
 
   return result;
 }

@@ -166,7 +166,7 @@ ExecMaterial(PlanState *pstate)
   result = _ExecMaterial(pstate);
 
   TS_MARKER(nodeMaterial_ExecMaterial_end);
-  TS_MARKER(nodeMaterial_ExecMaterial_features);
+  TS_FEATURES_MARKER(nodeMaterial_ExecMaterial_features, pstate);
 
   return result;
 }

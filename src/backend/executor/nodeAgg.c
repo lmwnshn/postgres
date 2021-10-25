@@ -2197,7 +2197,7 @@ ExecAgg(PlanState *pstate)
   result = _ExecAgg(pstate);
 
   TS_MARKER(nodeAgg_ExecAgg_end);
-  TS_MARKER(nodeAgg_ExecAgg_features);
+  TS_FEATURES_MARKER(nodeAgg_ExecAgg_features, pstate);
 
   return result;
 }

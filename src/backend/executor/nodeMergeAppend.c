@@ -288,7 +288,7 @@ ExecMergeAppend(PlanState *pstate)
   result = _ExecMergeAppend(pstate);
 
   TS_MARKER(nodeMergeAppend_ExecMergeAppend_end);
-  TS_MARKER(nodeMergeAppend_ExecMergeAppend_features);
+  TS_FEATURES_MARKER(nodeMergeAppend_ExecMergeAppend_features, pstate);
 
   return result;
 }

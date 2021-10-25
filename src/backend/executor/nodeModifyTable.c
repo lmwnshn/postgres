@@ -2655,7 +2655,7 @@ ExecModifyTable(PlanState *pstate)
     result = _ExecModifyTable(pstate);
 
     TS_MARKER(nodeModifyTable_ExecModifyTable_end);
-    TS_MARKER(nodeModifyTable_ExecModifyTable_features);
+    TS_FEATURES_MARKER(nodeModifyTable_ExecModifyTable_features, pstate);
 
     return result;
 }

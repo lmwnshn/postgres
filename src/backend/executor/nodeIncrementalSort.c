@@ -974,7 +974,7 @@ ExecIncrementalSort(PlanState *pstate)
   result = _ExecIncrementalSort(pstate);
 
   TS_MARKER(nodeIncrementalSort_ExecIncrementalSort_end);
-  TS_MARKER(nodeIncrementalSort_ExecIncrementalSort_features);
+  TS_FEATURES_MARKER(nodeIncrementalSort_ExecIncrementalSort_features, pstate);
 
   return result;
 }

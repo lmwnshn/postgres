@@ -291,7 +291,7 @@ ExecLockRows(PlanState *pstate)
   result = _ExecLockRows(pstate);
 
   TS_MARKER(nodeLockRows_ExecLockRows_end);
-  TS_MARKER(nodeLockRows_ExecLockRows_features);
+  TS_FEATURES_MARKER(nodeLockRows_ExecLockRows_features, pstate);
 
   return result;
 }

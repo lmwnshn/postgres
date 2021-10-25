@@ -137,7 +137,7 @@ ExecForeignScan(PlanState *pstate)
   result = _ExecForeignScan(pstate);
 
   TS_MARKER(nodeForeignscan_ExecForeignScan_end);
-  TS_MARKER(nodeForeignscan_ExecForeignScan_features);
+  TS_FEATURES_MARKER(nodeForeignscan_ExecForeignScan_features, pstate);
 
   return result;
 }

@@ -149,7 +149,7 @@ ExecResult(PlanState *pstate)
   result = _ExecResult(pstate);
 
   TS_MARKER(nodeResult_ExecResult_end);
-  TS_MARKER(nodeResult_ExecResult_features);
+  TS_FEATURES_MARKER(nodeResult_ExecResult_features, pstate);
 
   return result;
 }

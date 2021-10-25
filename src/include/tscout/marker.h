@@ -21,3 +21,13 @@
 
 // Test if previously-definied semaphore is in use
 #define TS_MARKER_IS_ENABLED(name) (FOLLY_SDT_SEMAPHORE(noisepage, name) > 0)
+
+// Define common features.
+#define TS_FEATURES_MARKER(name, plan_state_ptr, ...) \
+  uint64_t query_id;                                  \
+  double estimated_num_rows;                          \
+  int estimated_row_width_bytes;                      \
+  query_id = plan_state_ptr->state->es_plannedstmt->queryId; \
+  estimated_num_rows = plan_state_ptr->plan->plan_rows; \
+  estimated_row_width_bytes = plan_state_ptr->plan->plan_width; \
+  TS_MARKER(name, query_id, estimated_num_rows, estimated_row_width_bytes);

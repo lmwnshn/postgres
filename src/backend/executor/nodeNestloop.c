@@ -265,7 +265,7 @@ ExecNestLoop(PlanState *pstate)
   result = _ExecNestLoop(pstate);
 
   TS_MARKER(nodeNestloop_ExecNestLoop_end);
-  TS_MARKER(nodeNestloop_ExecNestLoop_features);
+  TS_FEATURES_MARKER(nodeNestloop_ExecNestLoop_features, pstate);
 
   return result;
 }

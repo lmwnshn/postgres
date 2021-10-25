@@ -282,7 +282,7 @@ ExecFunctionScan(PlanState *pstate)
   result = _ExecFunctionScan(pstate);
 
   TS_MARKER(nodeFunctionscan_ExecFunctionScan_end);
-  TS_MARKER(nodeFunctionscan_ExecFunctionScan_features);
+  TS_FEATURES_MARKER(nodeFunctionscan_ExecFunctionScan_features, pstate);
 
   return result;
 }
