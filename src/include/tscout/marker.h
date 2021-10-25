@@ -32,6 +32,6 @@
 // Define common features.
 #define TS_FEATURES_MARKER(name, plan_state_ptr, ...)                                           \
   query_id = plan_state_ptr->state->es_plannedstmt->queryId;                                    \
-  estimated_num_rows = (double) plan_state_ptr->plan->plan_rows;                                \
+  estimated_num_rows = (uint64_t) plan_state_ptr->plan->plan_rows;                              \
   estimated_row_width_bytes = plan_state_ptr->plan->plan_width;                                 \
   TS_MARKER(name, query_id, estimated_num_rows, estimated_row_width_bytes, ##__VA_ARGS__);
