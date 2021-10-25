@@ -155,7 +155,10 @@ _ExecGroup(PlanState *pstate)
 static TupleTableSlot *
 ExecGroup(PlanState *pstate)
 {
-  TupleTableSlot *result = NULL;
+  TupleTableSlot *result;
+  TS_MARKER_SETUP();
+
+  result = NULL;
   TS_MARKER(nodeGroup_ExecGroup_begin);
 
   result = _ExecGroup(pstate);

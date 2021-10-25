@@ -93,7 +93,10 @@ _ExecSubqueryScan(PlanState *pstate)
 static TupleTableSlot *
 ExecSubqueryScan(PlanState *pstate)
 {
-  TupleTableSlot *result = NULL;
+  TupleTableSlot *result;
+  TS_MARKER_SETUP();
+
+  result = NULL;
   TS_MARKER(nodeSubqueryscan_ExecSubqueryScan_begin);
 
   result = _ExecSubqueryScan(pstate);

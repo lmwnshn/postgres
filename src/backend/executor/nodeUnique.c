@@ -108,7 +108,10 @@ _ExecUnique(PlanState *pstate)
 static TupleTableSlot *
 ExecUnique(PlanState *pstate)
 {
-  TupleTableSlot *result = NULL;
+  TupleTableSlot *result;
+  TS_MARKER_SETUP();
+
+  result = NULL;
   TS_MARKER(nodeUnique_ExecUnique_begin);
 
   result = _ExecUnique(pstate);

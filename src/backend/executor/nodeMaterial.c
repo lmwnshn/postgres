@@ -160,7 +160,10 @@ _ExecMaterial(PlanState *pstate)
 static TupleTableSlot *
 ExecMaterial(PlanState *pstate)
 {
-  TupleTableSlot *result = NULL;
+  TupleTableSlot *result;
+  TS_MARKER_SETUP();
+
+  result = NULL;
   TS_MARKER(nodeMaterial_ExecMaterial_begin);
 
   result = _ExecMaterial(pstate);

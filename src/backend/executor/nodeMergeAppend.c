@@ -282,7 +282,10 @@ _ExecMergeAppend(PlanState *pstate)
 static TupleTableSlot *
 ExecMergeAppend(PlanState *pstate)
 {
-  TupleTableSlot *result = NULL;
+  TupleTableSlot *result;
+  TS_MARKER_SETUP();
+
+  result = NULL;
   TS_MARKER(nodeMergeAppend_ExecMergeAppend_begin);
 
   result = _ExecMergeAppend(pstate);

@@ -543,7 +543,10 @@ _ExecIndexScan(PlanState *pstate)
 static TupleTableSlot *
 ExecIndexScan(PlanState *pstate)
 {
-  TupleTableSlot *result = NULL;
+  TupleTableSlot *result;
+  TS_MARKER_SETUP();
+
+  result = NULL;
   TS_MARKER(nodeIndexscan_ExecIndexScan_begin);
 
   result = _ExecIndexScan(pstate);

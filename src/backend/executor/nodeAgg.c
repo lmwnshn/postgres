@@ -2191,7 +2191,10 @@ _ExecAgg(PlanState *pstate)
 static TupleTableSlot *
 ExecAgg(PlanState *pstate)
 {
-  TupleTableSlot *result = NULL;
+  TupleTableSlot *result;
+  TS_MARKER_SETUP();
+
+  result = NULL;
   TS_MARKER(nodeAgg_ExecAgg_begin);
 
   result = _ExecAgg(pstate);

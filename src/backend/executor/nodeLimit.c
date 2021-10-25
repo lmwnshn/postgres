@@ -348,7 +348,10 @@ _ExecLimit(PlanState *pstate)
 
 static TupleTableSlot *			/* return: a tuple or NULL */
 ExecLimit(PlanState *pstate) {
-  TupleTableSlot *result = NULL;
+  TupleTableSlot *result;
+  TS_MARKER_SETUP();
+
+  result = NULL;
   TS_MARKER(nodeLimit_ExecLimit_begin);
 
   result = _ExecLimit(pstate);

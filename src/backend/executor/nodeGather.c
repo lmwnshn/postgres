@@ -243,7 +243,10 @@ _ExecGather(PlanState *pstate)
 static TupleTableSlot *
 ExecGather(PlanState *pstate)
 {
-  TupleTableSlot *result = NULL;
+  TupleTableSlot *result;
+  TS_MARKER_SETUP();
+
+  result = NULL;
   TS_MARKER(nodeGather_ExecGather_begin);
 
   result = _ExecGather(pstate);

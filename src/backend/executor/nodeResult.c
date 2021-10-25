@@ -143,7 +143,10 @@ _ExecResult(PlanState *pstate)
 static TupleTableSlot *
 ExecResult(PlanState *pstate)
 {
-  TupleTableSlot *result = NULL;
+  TupleTableSlot *result;
+  TS_MARKER_SETUP();
+
+  result = NULL;
   TS_MARKER(nodeResult_ExecResult_begin);
 
   result = _ExecResult(pstate);

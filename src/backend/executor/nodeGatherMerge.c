@@ -283,7 +283,10 @@ _ExecGatherMerge(PlanState *pstate)
 static TupleTableSlot *
 ExecGatherMerge(PlanState *pstate)
 {
-  TupleTableSlot *result = NULL;
+  TupleTableSlot *result;
+  TS_MARKER_SETUP();
+
+  result = NULL;
   TS_MARKER(nodeGatherMerge_ExecGatherMerge_begin);
 
   result = _ExecGatherMerge(pstate);
