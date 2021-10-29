@@ -115,7 +115,7 @@ ExecTableFuncScan(PlanState *pstate)
   result = _ExecTableFuncScan(pstate);
 
   TS_MARKER(nodeTableFuncscan_ExecTableFuncScan_end);
-  TS_FEATURES_MARKER(nodeTableFuncscan_ExecTableFuncScan_features, pstate);
+  TS_FEATURES_MARKER(nodeTableFuncscan_ExecTableFuncScan_features, pstate, pstate);
 
   return result;
 }

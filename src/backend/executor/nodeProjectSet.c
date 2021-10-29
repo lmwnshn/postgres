@@ -129,7 +129,7 @@ ExecProjectSet(PlanState *pstate)
   result = _ExecProjectSet(pstate);
 
   TS_MARKER(nodeProjectSet_ExecProjectSet_end);
-  TS_FEATURES_MARKER(nodeProjectSet_ExecProjectSet_features, pstate);
+  TS_FEATURES_MARKER(nodeProjectSet_ExecProjectSet_features, pstate, pstate);
 
   return result;
 }

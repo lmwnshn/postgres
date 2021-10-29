@@ -395,7 +395,7 @@ ExecAppend(PlanState *pstate)
   result = _ExecAppend(pstate);
 
   TS_MARKER(nodeAppend_ExecAppend_end);
-  TS_FEATURES_MARKER(nodeAppend_ExecAppend_features, pstate);
+  TS_FEATURES_MARKER(nodeAppend_ExecAppend_features, pstate, pstate);
 
   return result;
 }

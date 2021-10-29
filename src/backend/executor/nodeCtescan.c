@@ -179,7 +179,7 @@ ExecCteScan(PlanState *pstate)
   result = _ExecCteScan(pstate);
 
   TS_MARKER(nodeCtescan_ExecCteScan_end);
-  TS_FEATURES_MARKER(nodeCtescan_ExecCteScan_features, pstate);
+  TS_FEATURES_MARKER(nodeCtescan_ExecCteScan_features, pstate, pstate);
 
   return result;
 }

@@ -233,7 +233,7 @@ ExecSetOp(PlanState *pstate)
   result = _ExecSetOp(pstate);
 
   TS_MARKER(nodeSetOp_ExecSetOp_end);
-  TS_FEATURES_MARKER(nodeSetOp_ExecSetOp_features, pstate);
+  TS_FEATURES_MARKER(nodeSetOp_ExecSetOp_features, pstate, pstate);
 
   return result;
 }

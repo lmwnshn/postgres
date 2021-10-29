@@ -172,7 +172,7 @@ ExecRecursiveUnion(PlanState *pstate)
   result = _ExecRecursiveUnion(pstate);
 
   TS_MARKER(nodeRecursiveunion_ExecRecursiveUnion_end);
-  TS_FEATURES_MARKER(nodeRecursiveunion_ExecRecursiveUnion_features, pstate);
+  TS_FEATURES_MARKER(nodeRecursiveunion_ExecRecursiveUnion_features, pstate, pstate);
 
   return result;
 }

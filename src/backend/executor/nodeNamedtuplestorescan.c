@@ -87,7 +87,7 @@ ExecNamedTuplestoreScan(PlanState *pstate)
   result = _ExecNamedTuplestoreScan(pstate);
 
   TS_MARKER(nodeNamedtuplestorescan_ExecNamedTuplestoreScan_end);
-  TS_FEATURES_MARKER(nodeNamedtuplestorescan_ExecNamedTuplestoreScan_features, pstate);
+  TS_FEATURES_MARKER(nodeNamedtuplestorescan_ExecNamedTuplestoreScan_features, pstate, pstate);
 
   return result;
 }

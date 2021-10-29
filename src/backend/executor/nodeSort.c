@@ -169,7 +169,7 @@ ExecSort(PlanState *pstate)
   result = _ExecSort(pstate);
 
   TS_MARKER(nodeSort_ExecSort_end);
-  TS_FEATURES_MARKER(nodeSort_ExecSort_features, pstate);
+  TS_FEATURES_MARKER(nodeSort_ExecSort_features, pstate, pstate);
 
   return result;
 }

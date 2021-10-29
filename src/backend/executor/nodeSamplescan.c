@@ -101,7 +101,7 @@ ExecSampleScan(PlanState *pstate)
   result = _ExecSampleScan(pstate);
 
   TS_MARKER(nodeSamplescan_ExecSampleScan_end);
-  TS_FEATURES_MARKER(nodeSamplescan_ExecSampleScan_features, pstate);
+  TS_FEATURES_MARKER(nodeSamplescan_ExecSampleScan_features, pstate, pstate);
 
   return result;
 }

@@ -1441,7 +1441,7 @@ ExecMergeJoin(PlanState *pstate)
   result = _ExecMergeJoin(pstate);
 
   TS_MARKER(nodeMergejoin_ExecMergeJoin_end);
-  TS_FEATURES_MARKER(nodeMergejoin_ExecMergeJoin_features, pstate);
+  TS_FEATURES_MARKER(nodeMergejoin_ExecMergeJoin_features, pstate, pstate);
 
   return result;
 }

@@ -357,7 +357,7 @@ ExecLimit(PlanState *pstate) {
   result = _ExecLimit(pstate);
 
   TS_MARKER(nodeLimit_ExecLimit_end);
-  TS_FEATURES_MARKER(nodeLimit_ExecLimit_features, pstate);
+  TS_FEATURES_MARKER(nodeLimit_ExecLimit_features, pstate, pstate);
 
   return result;
 }

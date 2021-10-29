@@ -552,7 +552,7 @@ ExecIndexScan(PlanState *pstate)
   result = _ExecIndexScan(pstate);
 
   TS_MARKER(nodeIndexscan_ExecIndexScan_end);
-  TS_FEATURES_MARKER(nodeIndexscan_ExecIndexScan_features, pstate);
+  TS_FEATURES_MARKER(nodeIndexscan_ExecIndexScan_features, pstate, pstate);
 
   return result;
 }

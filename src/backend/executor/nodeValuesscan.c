@@ -216,7 +216,7 @@ ExecValuesScan(PlanState *pstate)
   result = _ExecValuesScan(pstate);
 
   TS_MARKER(nodeValuesscan_ExecValuesScan_end);
-  TS_FEATURES_MARKER(nodeValuesscan_ExecValuesScan_features, pstate);
+  TS_FEATURES_MARKER(nodeValuesscan_ExecValuesScan_features, pstate, pstate);
 
   return result;
 }

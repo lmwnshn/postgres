@@ -23,15 +23,19 @@
 #define TS_MARKER_IS_ENABLED(name) (FOLLY_SDT_SEMAPHORE(noisepage, name) > 0)
 
 // Define variables required by all of the markers. This avoids the C90 warnings.
-#define TS_MARKER_SETUP()               \
-  /* Features. */                       \
-  uint64_t query_id;                    \
-  uint64_t estimated_num_rows;          \
-  int estimated_row_width_bytes;
+#define TS_MARKER_SETUP()                                                                       \
+  /* Features. */                                                                               \
+  uint64_t query_id;                                                                            \
+  /* The current node. */                                                                       \
+  void *cur_node;
 
 // Define common features.
-#define TS_FEATURES_MARKER(name, plan_state_ptr, ...)                                           \
+#define TS_FEATURES_MARKER(name, current_node, plan_state_ptr, ...)                             \
   query_id = plan_state_ptr->state->es_plannedstmt->queryId;                                    \
-  estimated_num_rows = (uint64_t) plan_state_ptr->plan->plan_rows;                              \
-  estimated_row_width_bytes = plan_state_ptr->plan->plan_width;                                 \
-  TS_MARKER(name, query_id, estimated_num_rows, estimated_row_width_bytes, ##__VA_ARGS__);
+  cur_node = (void *) current_node;                                                             \
+  TS_MARKER(                                                                                    \
+    name,                                                                                       \
+    query_id,                                                                                   \
+    cur_node,                                                                               \
+    ##__VA_ARGS__                                                                               \
+  );

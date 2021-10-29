@@ -164,7 +164,7 @@ ExecGroup(PlanState *pstate)
   result = _ExecGroup(pstate);
 
   TS_MARKER(nodeGroup_ExecGroup_end);
-  TS_FEATURES_MARKER(nodeGroup_ExecGroup_features, pstate);
+  TS_FEATURES_MARKER(nodeGroup_ExecGroup_features, pstate, pstate, pstate);
 
   return result;
 }
