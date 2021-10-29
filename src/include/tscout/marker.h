@@ -36,6 +36,7 @@
   TS_MARKER(                                                                                    \
     name,                                                                                       \
     query_id,                                                                                   \
-    cur_node,                                                                               \
+    cur_node,                                                                                   \
+    plan_state_ptr,                                                                             \
     ##__VA_ARGS__                                                                               \
   );
