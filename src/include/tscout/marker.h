@@ -37,6 +37,6 @@
     name,                                                                                       \
     query_id,                                                                                   \
     cur_node,                                                                                   \
-    plan_state_ptr,                                                                             \
+    plan_state_ptr->state,                                                                      \
     ##__VA_ARGS__                                                                               \
   );
