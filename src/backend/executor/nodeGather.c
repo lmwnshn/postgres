@@ -252,7 +252,7 @@ ExecGather(PlanState *pstate)
   result = _ExecGather(pstate);
 
   TS_MARKER(nodeGather_ExecGather_end);
-  TS_FEATURES_MARKER(nodeGather_ExecGather_features, pstate, pstate);
+  TS_FEATURES_MARKER(nodeGather_ExecGather_features, castNode(GatherState, pstate), pstate);
 
   return result;
 }

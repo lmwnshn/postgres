@@ -128,7 +128,7 @@ ExecCustomScan(PlanState *pstate)
   result = _ExecCustomScan(pstate);
 
   TS_MARKER(nodeCustom_ExecCustomScan_end);
-  TS_FEATURES_MARKER(nodeCustom_ExecCustomScan_features, pstate, pstate);
+  TS_FEATURES_MARKER(nodeCustom_ExecCustomScan_features, castNode(CustomScanState, pstate), pstate);
 
   return result;
 }

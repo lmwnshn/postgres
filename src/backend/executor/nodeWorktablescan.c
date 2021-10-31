@@ -134,7 +134,7 @@ ExecWorkTableScan(PlanState *pstate)
   result = _ExecWorkTableScan(pstate);
 
   TS_MARKER(nodeWorktablescan_ExecWorkTableScan_end);
-  TS_FEATURES_MARKER(nodeWorktablescan_ExecWorkTableScan_features, pstate, pstate);
+  TS_FEATURES_MARKER(nodeWorktablescan_ExecWorkTableScan_features, castNode(WorkTableScanState, pstate), pstate);
 
   return result;
 }

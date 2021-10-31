@@ -450,7 +450,7 @@ ExecTidScan(PlanState *pstate)
   result = _ExecTidScan(pstate);
 
   TS_MARKER(nodeTidscan_ExecTidScan_end);
-  TS_FEATURES_MARKER(nodeTidscan_ExecTidScan_features, pstate, pstate);
+  TS_FEATURES_MARKER(nodeTidscan_ExecTidScan_features, castNode(TidScanState, pstate), pstate);
 
   return result;
 }

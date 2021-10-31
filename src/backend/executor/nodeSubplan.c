@@ -108,7 +108,7 @@ ExecSubPlan(SubPlanState *node,
   result = _ExecSubPlan(node, econtext, isNull);
 
   TS_MARKER(nodeSubplan_ExecSubPlan_end);
-  TS_FEATURES_MARKER(nodeSubplan_ExecSubPlan_features, node, node->planstate);
+  TS_FEATURES_MARKER(nodeSubplan_ExecSubPlan_features, castNode(SubPlanState, node), node->planstate);
 
   return result;
 }

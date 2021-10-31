@@ -332,7 +332,7 @@ ExecIndexOnlyScan(PlanState *pstate)
   result = _ExecIndexOnlyScan(pstate);
 
   TS_MARKER(nodeIndexonlyscan_ExecIndexOnlyScan_end);
-  TS_FEATURES_MARKER(nodeIndexonlyscan_ExecIndexOnlyScan_features, pstate, pstate);
+  TS_FEATURES_MARKER(nodeIndexonlyscan_ExecIndexOnlyScan_features, castNode(IndexOnlyScanState, pstate), pstate);
 
   return result;
 }

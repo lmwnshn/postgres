@@ -2251,7 +2251,7 @@ ExecWindowAgg(PlanState *pstate)
   result = _ExecWindowAgg(pstate);
 
   TS_MARKER(nodeWindowAgg_ExecWindowAgg_end);
-  TS_FEATURES_MARKER(nodeWindowAgg_ExecWindowAgg_features, pstate, pstate);
+  TS_FEATURES_MARKER(nodeWindowAgg_ExecWindowAgg_features, castNode(WindowAggState, pstate), pstate);
 
   return result;
 }

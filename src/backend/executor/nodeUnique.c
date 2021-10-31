@@ -117,7 +117,7 @@ ExecUnique(PlanState *pstate)
   result = _ExecUnique(pstate);
 
   TS_MARKER(nodeUnique_ExecUnique_end);
-  TS_FEATURES_MARKER(nodeUnique_ExecUnique_features, pstate, pstate);
+  TS_FEATURES_MARKER(nodeUnique_ExecUnique_features, castNode(UniqueState, pstate), pstate);
 
   return result;
 }

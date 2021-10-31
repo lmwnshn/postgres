@@ -127,7 +127,7 @@ ExecSeqScan(PlanState *pstate)
   result = _ExecSeqScan(pstate);
 
   TS_MARKER(nodeSeqscan_ExecSeqScan_end);
-  TS_FEATURES_MARKER(nodeSeqscan_ExecSeqScan_features, pstate, pstate);
+  TS_FEATURES_MARKER(nodeSeqscan_ExecSeqScan_features, castNode(SeqScanState, pstate), pstate);
 
   return result;
 }

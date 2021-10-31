@@ -169,7 +169,7 @@ ExecMaterial(PlanState *pstate)
   result = _ExecMaterial(pstate);
 
   TS_MARKER(nodeMaterial_ExecMaterial_end);
-  TS_FEATURES_MARKER(nodeMaterial_ExecMaterial_features, pstate, pstate);
+  TS_FEATURES_MARKER(nodeMaterial_ExecMaterial_features, castNode(MaterialState, pstate), pstate);
 
   return result;
 }

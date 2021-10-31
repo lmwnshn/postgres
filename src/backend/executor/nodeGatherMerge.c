@@ -292,7 +292,7 @@ ExecGatherMerge(PlanState *pstate)
   result = _ExecGatherMerge(pstate);
 
   TS_MARKER(nodeGatherMerge_ExecGatherMerge_end);
-  TS_FEATURES_MARKER(nodeGatherMerge_ExecGatherMerge_features, pstate, pstate);
+  TS_FEATURES_MARKER(nodeGatherMerge_ExecGatherMerge_features, castNode(GatherMergeState, pstate), pstate);
 
   return result;
 }
