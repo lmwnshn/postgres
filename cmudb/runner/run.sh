@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 export ROOT_DIR=$(pwd)
+POSTGRES_RUN_CONFIGURE="true"
+POSTGRES_RUN_CLEAN="true"
+POSTGRES_RUN_CLEAR_DATA="true"
+POSTGRES_BUILD_TYPE="release"
+
 export HOSTNAME=$(hostname)
 
 export ARTIFACT_ROOT="${ROOT_DIR}/artifact"
